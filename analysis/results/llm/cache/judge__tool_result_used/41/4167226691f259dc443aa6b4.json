@@ -1,0 +1,1 @@
+{"id": "4167226691f259dc443aa6b4", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 3283, "output_tokens": 55}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later assistant text cites PARENT_BRANCH_ID gap from the log; only a few error lines were used."}, "ts": 1789153601.050317}

@@ -1,0 +1,3 @@
+heat,files,edits,pct_of_all_edits,avg_pct_edits_followed_by_error,avg_pct_edits_followed_by_short_correction,median_edits_per_file
+cold (<10 sessions),32096,148377,79.44157408646768,9.22366477248071,61.984000694209776,2.0
+hot (>=10 sessions),518,38398,20.558425913532325,7.63477558919237,64.50263650367992,47.0

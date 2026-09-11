@@ -1,0 +1,4 @@
+agent,turns_with_a_next_prompt,turns_dropped_no_call_before_next_prompt,turns_where_last_call_ts_was_after_next_prompt,median_raw_delta_s,median_adjusted_delta_s
+claude_code,57362,19,59,95.9885,96.205
+codex,13441,2684,12352,-4.605,74.259
+opencode,2178,7,17,123.8835,126.196

@@ -1,0 +1,1 @@
+{"id": "cb78a8f5c74df3787b34d0c8", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2629, "output_tokens": 43}, "result": {"cause": "agent_regression", "reason": "Agent edits its own recently added code to fix linter issues (unparam) and refactor error handling, indicating self-correction."}, "ts": 1789153616.546329}

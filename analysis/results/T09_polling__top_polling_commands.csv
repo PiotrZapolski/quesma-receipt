@@ -1,0 +1,24 @@
+command_head_80,polling_calls,sessions,usd
+sleep 120,326,27,28.913835000000013
+sleep 180,94,13,8.047717999999998
+sleep 60,70,25,5.5474964
+sleep 30,53,15,4.381485500000001
+"cd /Users/scottdensmore/Developer/scottdensmore/contactmanager
+for i in $(seq 1 ",47,1,11.719936000000002
+sleep 120; gh api repos/fogodev/ars-ui/issues/679/reactions --paginate | jq -r ',42,2,3.914763999999999
+sleep 120 && echo poll,36,3,2.942323
+"sleep 120
+printf 'reactions:\n'
+gh api repos/fogodev/ars-ui/issues/667/reactions",32,1,2.5374309999999998
+sleep 300,31,11,2.9887010000000007
+sleep 120; echo '--- reactions ---'; gh api repos/fogodev/ars-ui/issues/694/reac,30,2,2.38532
+"sleep 180; gh pr view 679 --json mergeStateStatus,statusCheckRollup --jq '{merge",30,2,3.3104719999999994
+sleep 240,26,11,2.483468
+sleep 90,26,13,1.988523
+"sleep 900 && echo ""=== $(date) ==="" && uv run iris --config lib/iris/examples/ma",25,2,5.770081500000001
+"sleep 120 && gh api repos/fogodev/ars-ui/issues/683/reactions --jq '.[] | ""\(.us",23,1,1.816931
+sleep 180 && source ~/.bashrc && uv run iris --config lib/iris/examples/marin.ya,22,7,1.9851705
+sleep 45,21,12,1.8080640000000001
+sleep 3,21,15,1.16814
+"sleep 120 && gh pr checks 727 --json name,state,bucket,link,startedAt,completedA",20,1,2.4491920000000005
+"until grep -qE ""BUILD SUCCEEDED|BUILD FAILED"" /tmp/s6-ios.txt 2>/dev/null; do sl",19,1,4.203101

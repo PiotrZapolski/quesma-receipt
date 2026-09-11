@@ -1,0 +1,1 @@
+{"id": "b85d2dd9e9194a556233de1f", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2168, "output_tokens": 42}, "result": {"cause": "agent_regression", "reason": "Agent removed scenario 2 in prior commit, then immediately re-adds it in new branch, editing same function to restore functionality."}, "ts": 1789153620.051611}

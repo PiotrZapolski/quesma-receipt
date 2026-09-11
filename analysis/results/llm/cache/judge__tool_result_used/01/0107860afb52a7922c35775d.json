@@ -1,0 +1,1 @@
+{"id": "0107860afb52a7922c35775d", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 4133, "output_tokens": 54}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later assistant text at [7752] cites the failed test's stale June 2 assertion from the focus result."}, "ts": 1789153596.908057}

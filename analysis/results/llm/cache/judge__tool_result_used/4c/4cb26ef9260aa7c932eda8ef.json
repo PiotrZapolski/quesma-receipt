@@ -1,0 +1,1 @@
+{"id": "4cb26ef9260aa7c932eda8ef", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1868, "output_tokens": 55}, "result": {"was_result_referenced_later": false, "fraction_of_result_needed": "none", "reason": "No later record uses any content from the format:write output; subsequent calls are lint, diff check, and status."}, "ts": 1789153601.802631}

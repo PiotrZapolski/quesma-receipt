@@ -1,0 +1,3 @@
+heat,edits,pct_edits_followed_by_error,pct_edits_followed_by_short_correction
+cold (<10 sessions),148377,7.6635866744845895,61.290496505523095
+hot (>=10 sessions),38398,6.80504192926715,64.95650815146622

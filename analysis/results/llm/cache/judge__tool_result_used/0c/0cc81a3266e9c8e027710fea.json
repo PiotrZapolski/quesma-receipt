@@ -1,0 +1,1 @@
+{"id": "0cc81a3266e9c8e027710fea", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 7689, "output_tokens": 52}, "result": {"was_result_referenced_later": false, "fraction_of_result_needed": "none", "reason": "No later record uses information from the session-manager.d.ts result; subsequent fetches target unrelated files."}, "ts": 1789153585.896399}

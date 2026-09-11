@@ -1,0 +1,1 @@
+{"id": "6c8ffda5d60f93051402a6e2", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 3462, "output_tokens": 57}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later assistant text cites TTL and PARENT_BRANCH_ID lifecycle from this result; only a few lines were needed."}, "ts": 1789153605.654177}

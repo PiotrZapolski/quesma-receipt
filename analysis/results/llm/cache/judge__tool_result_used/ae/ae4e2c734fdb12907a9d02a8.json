@@ -1,0 +1,1 @@
+{"id": "ae4e2c734fdb12907a9d02a8", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1727, "output_tokens": 50}, "result": {"was_result_referenced_later": false, "fraction_of_result_needed": "none", "reason": "No later record uses any information from the format output; subsequent actions only note that format passed."}, "ts": 1789153600.427229}

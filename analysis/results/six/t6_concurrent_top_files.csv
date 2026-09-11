@@ -1,0 +1,13 @@
+repo,file_path,overlapping_session_pairs
+entireio/cli-checkpoints,cmd/entire/cli/strategy/manual_commit_condensation.go,45
+entireio/cli-checkpoints,cmd/entire/cli/checkpoint/committed.go,40
+entireio/cli-checkpoints,cmd/entire/cli/explain.go,37
+E2E-Solution/cli,cmd/entire/cli/strategy/manual_commit_hooks.go,34
+entireio/cli-checkpoints,cmd/entire/cli/strategy/manual_commit_hooks.go,32
+entireio/cli-checkpoints,cmd/entire/cli/migrate.go,22
+E2E-Solution/cli,cmd/entire/cli/lifecycle.go,17
+entireio/cli-checkpoints,cmd/entire/cli/explain_test.go,17
+entireio/cli-checkpoints,cmd/entire/cli/checkpoint/open.go,17
+entireio/cli-checkpoints,cmd/entire/cli/resume.go,17
+entireio/cli-checkpoints,cmd/entire/cli/settings/settings.go,16
+entireio/cli-checkpoints,cmd/entire/cli/strategy/manual_commit_rewind.go,15

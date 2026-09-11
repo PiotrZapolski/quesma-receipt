@@ -1,0 +1,1 @@
+{"id": "85ca5e5d2b4165748d288128", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1731, "output_tokens": 59}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later record 6591 used the failure line 'exactly one branch, `main`' from the test output to patch the assertion."}, "ts": 1789153596.466997}

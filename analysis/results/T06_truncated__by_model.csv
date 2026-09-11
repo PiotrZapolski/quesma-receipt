@@ -1,0 +1,5 @@
+model,stop_reason,truncated_calls,sessions,avg_output_tokens,usd_of_continuation_input
+claude-sonnet-4-6,max_tokens,22,13,9090.863636363636,0.6331076999999998
+claude-opus-4-8,max_tokens,9,3,63999.88888888889,1.47029
+claude-opus-4-6,max_tokens,8,8,14000.0,0.256886
+claude-sonnet-4.6,length,1,1,32000.0,0.32079525

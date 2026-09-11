@@ -1,0 +1,1 @@
+{"id": "a882e0246e3b05e65a3c31db", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1859, "output_tokens": 54}, "result": {"was_result_referenced_later": false, "fraction_of_result_needed": "none", "reason": "No later record uses any content from the format output; subsequent tests and commands rely only on exit code 0."}, "ts": 1789153607.582746}

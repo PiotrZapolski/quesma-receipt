@@ -1,0 +1,1 @@
+{"id": "911735a80f4681cebd16e195", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 5624, "output_tokens": 53}, "result": {"was_result_referenced_later": false, "fraction_of_result_needed": "none", "reason": "No later record uses information from the types.d.ts result; subsequent calls focus on session docs and npm registry."}, "ts": 1789153588.04737}

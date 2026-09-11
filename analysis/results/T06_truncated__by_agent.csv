@@ -1,0 +1,5 @@
+agent,calls,truncated_calls,pct_calls_truncated,usd_of_continuation_input,continuation_ctx_tokens
+claude_code,677425,39,0.0057570948813521795,2.3602836999999997,3745332
+opencode,27949,1,0.003577945543668825,0.32079525,85546
+cursor,8910,0,0.0,,
+codex,218945,0,0.0,,

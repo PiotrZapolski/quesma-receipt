@@ -1,0 +1,1 @@
+{"id": "c496a53ed2bbbd9be1ed023a", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1640, "output_tokens": 50}, "result": {"was_result_referenced_later": false, "fraction_of_result_needed": "none", "reason": "No later record uses information from this result; subsequent actions only rerun diagnostics on a file."}, "ts": 1789153595.3693519}

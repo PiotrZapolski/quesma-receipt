@@ -1,0 +1,1 @@
+{"id": "90e3cfa559fad14676a43be7", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 4670, "output_tokens": 53}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later calls fetched HttpHandler and ProxyBuilder docs; only the trait/function names from this page were used."}, "ts": 1789153571.979845}

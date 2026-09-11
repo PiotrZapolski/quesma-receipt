@@ -1,0 +1,13 @@
+repo,file_path_70,agent,sessions,users,edits,pct_edits_followed_by_error,pct_edits_followed_by_short_correction
+E2E-Solution/cli,cmd/entire/cli/strategy/manual_commit_hooks.go,claude_code,120,8,745,9.12751677852349,50.87248322147651
+entireio/cli-checkpoints,cmd/entire/cli/strategy/manual_commit_condensation.go,codex,100,9,341,4.9853372434017595,80.35190615835778
+henryph24/neuralips26,main.tex,claude_code,91,1,2012,3.3797216699801194,74.75149105367794
+armelhbobdad/bmad-module-skill-forge,_bmad-output/implementation-artifacts/sprint-status.yaml,claude_code,90,1,223,7.174887892376682,22.869955156950674
+entireio/cli-checkpoints,cmd/entire/cli/explain.go,codex,86,13,480,6.875,67.5
+entireio/cli-checkpoints,cmd/entire/cli/checkpoint/committed.go,codex,83,9,362,4.419889502762431,75.96685082872928
+entireio/cli-checkpoints,cmd/entire/cli/strategy/manual_commit_hooks.go,codex,83,9,315,7.936507936507937,72.6984126984127
+FSM1/cipher-box,.planning/STATE.md,claude_code,83,2,205,6.829268292682927,43.90243902439025
+E2E-Solution/cli,cmd/entire/cli/strategy/manual_commit_condensation.go,claude_code,76,9,268,8.955223880597014,58.208955223880594
+cyyeh/duckdb-data-agent,backend/app/agent.py,claude_code,66,1,259,6.177606177606178,70.65637065637065
+entireio/cli-checkpoints,cmd/entire/cli/migrate.go,codex,63,6,483,1.2422360248447204,72.67080745341615
+entireio/cli-checkpoints,cmd/entire/cli/settings/settings.go,codex,62,9,165,2.4242424242424243,67.27272727272727

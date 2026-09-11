@@ -1,0 +1,1 @@
+{"id": "aa067f5166904623c0be4243", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 5152, "output_tokens": 58}, "result": {"was_full_rewrite_needed": true, "estimated_lines_actually_changed": 0, "reason": "The file is brand new; the apply_patch shows 'Add File' with no prior content, so a full write was necessary."}, "ts": 1789153561.56176}

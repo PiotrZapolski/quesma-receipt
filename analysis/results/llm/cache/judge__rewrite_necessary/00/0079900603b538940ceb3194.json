@@ -1,0 +1,1 @@
+{"id": "0079900603b538940ceb3194", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2483, "output_tokens": 50}, "result": {"was_full_rewrite_needed": true, "estimated_lines_actually_changed": 0, "reason": "The file was deleted and recreated as a new file, so the full write is necessary."}, "ts": 1789153520.685675}

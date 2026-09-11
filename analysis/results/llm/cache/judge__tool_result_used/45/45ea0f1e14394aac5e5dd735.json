@@ -1,0 +1,1 @@
+{"id": "45ea0f1e14394aac5e5dd735", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2629, "output_tokens": 56}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Record 13 listed component/page files from the glob result, but only a subset of paths was used to prompt the user."}, "ts": 1789153583.270941}

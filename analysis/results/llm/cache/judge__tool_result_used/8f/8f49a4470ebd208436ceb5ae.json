@@ -1,0 +1,1 @@
+{"id": "8f49a4470ebd208436ceb5ae", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 3912, "output_tokens": 59}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later webfetch attempts (records 14-15) targeted the API docs URL from this result, but only the URL was used."}, "ts": 1789153575.4829812}

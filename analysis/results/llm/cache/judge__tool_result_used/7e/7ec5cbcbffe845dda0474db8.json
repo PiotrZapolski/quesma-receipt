@@ -1,0 +1,1 @@
+{"id": "7ec5cbcbffe845dda0474db8", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1463, "output_tokens": 49}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later apply_patch used the failure's expected vs received text to adjust the assertion wording."}, "ts": 1789153601.888015}

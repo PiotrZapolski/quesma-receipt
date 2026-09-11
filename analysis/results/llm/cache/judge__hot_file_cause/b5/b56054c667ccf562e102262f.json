@@ -1,0 +1,1 @@
+{"id": "b56054c667ccf562e102262f", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2539, "output_tokens": 40}, "result": {"cause": "agent_regression", "reason": "Agent reverted its own optional cleanup in resume.go, restoring duplicate debug log lines to keep diff strictly on required fix."}, "ts": 1789153620.249007}

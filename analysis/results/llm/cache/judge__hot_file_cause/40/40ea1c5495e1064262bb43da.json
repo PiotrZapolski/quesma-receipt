@@ -1,0 +1,1 @@
+{"id": "40ea1c5495e1064262bb43da", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2162, "output_tokens": 31}, "result": {"cause": "agent_regression", "reason": "Duplicate function definitions from auto-merge; agent edits to unify them."}, "ts": 1789153613.83042}

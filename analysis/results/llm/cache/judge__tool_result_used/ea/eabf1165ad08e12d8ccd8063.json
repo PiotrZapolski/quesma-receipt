@@ -1,0 +1,1 @@
+{"id": "eabf1165ad08e12d8ccd8063", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1715, "output_tokens": 52}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "The failing test output in record 5502 was used to patch the assertion in record 5507."}, "ts": 1789153594.6753101}

@@ -1,0 +1,1 @@
+{"id": "2a0de413deb8ebc140766b3a", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 3531, "output_tokens": 39}, "result": {"cause": "agent_regression", "reason": "Agent added //nolint:errcheck to silence a lint error it introduced, rather than properly handling the error."}, "ts": 1789153617.9799051}

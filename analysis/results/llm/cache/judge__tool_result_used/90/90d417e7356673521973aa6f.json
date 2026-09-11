@@ -1,0 +1,1 @@
+{"id": "90d417e7356673521973aa6f", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2267, "output_tokens": 50}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later record 9575 likely used specific grep matches from this output to identify remaining stabilization items."}, "ts": 1789153597.378859}

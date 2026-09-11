@@ -1,0 +1,1 @@
+{"id": "d240f50ebf5ffe09626e0b74", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2540, "output_tokens": 44}, "result": {"cause": "agent_regression", "reason": "Agent changed IsCheckpointsV2Enabled and IsPushV2RefsEnabled to always return false, breaking existing tests that expected true."}, "ts": 1789153617.4532852}

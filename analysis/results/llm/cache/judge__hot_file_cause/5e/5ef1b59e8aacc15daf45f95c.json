@@ -1,0 +1,1 @@
+{"id": "5ef1b59e8aacc15daf45f95c", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 3522, "output_tokens": 34}, "result": {"cause": "agent_regression", "reason": "The agent is resolving merge conflict markers it introduced in resume.go, fixing its own damage."}, "ts": 1789153620.413104}

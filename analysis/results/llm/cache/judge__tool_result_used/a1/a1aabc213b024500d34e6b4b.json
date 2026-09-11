@@ -1,0 +1,1 @@
+{"id": "a1aabc213b024500d34e6b4b", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 4387, "output_tokens": 53}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later test update at [354] used the new launch_options signature and env var behavior from the written file."}, "ts": 1789153576.706933}

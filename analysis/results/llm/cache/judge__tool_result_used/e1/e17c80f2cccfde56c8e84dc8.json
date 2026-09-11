@@ -1,0 +1,1 @@
+{"id": "e17c80f2cccfde56c8e84dc8", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 3858, "output_tokens": 50}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later assistant message cites consumer duration limit (15 minutes) from this result to explain timeout fix."}, "ts": 1789153581.972169}

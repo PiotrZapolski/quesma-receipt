@@ -1,0 +1,1 @@
+{"id": "08533e133bfdea37f710ad6c", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2417, "output_tokens": 46}, "result": {"cause": "test_file", "reason": "The file is a test file (migrate_test.go) that changes with each feature; this edit adds a test for preserving CreatedAt during migration."}, "ts": 1789153620.025957}

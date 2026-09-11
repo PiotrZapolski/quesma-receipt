@@ -1,0 +1,1 @@
+{"id": "261c1b19956fe25d3d6b0d45", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2716, "output_tokens": 44}, "result": {"cause": "agent_regression", "reason": "Agent edited explain.go to fix its own earlier mistake: changed type from TemporaryCheckpoint to TemporaryCheckpointInfo after grep showed correct type."}, "ts": 1789153625.4647539}

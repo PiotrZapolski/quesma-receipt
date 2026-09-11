@@ -1,0 +1,1 @@
+{"id": "256f4884a34b3dbf0cc07e3c", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 5555, "output_tokens": 50}, "result": {"was_result_referenced_later": false, "fraction_of_result_needed": "none", "reason": "No later record uses information from the fetched commands.md; subsequent reads focus on existing source files."}, "ts": 1789153578.1982799}

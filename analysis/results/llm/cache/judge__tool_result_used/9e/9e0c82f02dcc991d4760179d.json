@@ -1,0 +1,1 @@
+{"id": "9e0c82f02dcc991d4760179d", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 3792, "output_tokens": 55}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Record 5987 cites the members-hub viewport spec missing from Active Files, which came from this rg output."}, "ts": 1789153595.107913}

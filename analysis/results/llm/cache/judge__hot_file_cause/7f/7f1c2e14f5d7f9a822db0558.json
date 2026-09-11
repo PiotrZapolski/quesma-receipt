@@ -1,0 +1,1 @@
+{"id": "7f1c2e14f5d7f9a822db0558", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 3228, "output_tokens": 42}, "result": {"cause": "agent_regression", "reason": "Agent previously added UNIQUE index and OVERWRITE hack, now removes them after discovering SurrealDB bug causing empty query results."}, "ts": 1789153619.406226}

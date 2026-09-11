@@ -1,0 +1,1 @@
+{"id": "d59559972042f1de25283bd7", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2087, "output_tokens": 55}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later assistant text at [13706] cites the test counts (4 passed, 52 passed) from this result."}, "ts": 1789153599.763772}

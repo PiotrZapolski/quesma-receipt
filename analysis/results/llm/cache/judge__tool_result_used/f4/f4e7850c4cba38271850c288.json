@@ -1,0 +1,1 @@
+{"id": "f4e7850c4cba38271850c288", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 4331, "output_tokens": 60}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Record 9 cites the websearch result to claim gitleaks-action v2 expects GITLEAKS_CONFIG env, not config-path input."}, "ts": 1789153588.6506839}

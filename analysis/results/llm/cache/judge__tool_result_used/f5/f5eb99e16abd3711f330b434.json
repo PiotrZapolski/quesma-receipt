@@ -1,0 +1,1 @@
+{"id": "f5eb99e16abd3711f330b434", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 3788, "output_tokens": 53}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later reads ADR-050 and ADR-049 from the list; only those two paths were used."}, "ts": 1789153583.451112}

@@ -1,0 +1,1 @@
+{"id": "76c1618a7a538c3c63826f02", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1795, "output_tokens": 57}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later assistant text at 7395 says 'Format and lint pass', using only the exit code/summary from this result."}, "ts": 1789153596.1394858}

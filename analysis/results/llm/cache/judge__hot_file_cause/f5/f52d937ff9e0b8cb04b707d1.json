@@ -1,0 +1,1 @@
+{"id": "f52d937ff9e0b8cb04b707d1", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2042, "output_tokens": 42}, "result": {"cause": "agent_regression", "reason": "Agent removed an interface, leaving 'context' unused, then edited checkpoint.go to delete the import and fix its own compile error."}, "ts": 1789153624.008394}

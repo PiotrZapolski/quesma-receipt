@@ -1,0 +1,1 @@
+{"id": "1b008f9429544314b8f335d0", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 3388, "output_tokens": 50}, "result": {"was_full_rewrite_needed": false, "estimated_lines_actually_changed": 3, "reason": "Only apiKey destructuring, validation, and getModel call changed; rest of file identical."}, "ts": 1789153534.051381}

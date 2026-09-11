@@ -1,0 +1,1 @@
+{"id": "c022d00d32795001d185f028", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2785, "output_tokens": 46}, "result": {"cause": "agent_regression", "reason": "The agent introduced an undefined 'errors' reference in committed.go and then edited the same file to add the missing import, fixing its own lint failure."}, "ts": 1789153623.9577742}

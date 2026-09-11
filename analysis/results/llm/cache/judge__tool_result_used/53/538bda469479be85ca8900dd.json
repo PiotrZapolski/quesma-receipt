@@ -1,0 +1,1 @@
+{"id": "538bda469479be85ca8900dd", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2699, "output_tokens": 54}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later record 10016 likely used specific file paths and line numbers from this grep output to target edits or tests."}, "ts": 1789153598.196394}

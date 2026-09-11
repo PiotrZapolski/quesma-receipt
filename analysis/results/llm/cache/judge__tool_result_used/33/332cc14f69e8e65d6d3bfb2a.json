@@ -1,0 +1,1 @@
+{"id": "332cc14f69e8e65d6d3bfb2a", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1871, "output_tokens": 52}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later assistant message at 9629 references the document's recorded checkpoint hash, which came from this result."}, "ts": 1789153597.924163}

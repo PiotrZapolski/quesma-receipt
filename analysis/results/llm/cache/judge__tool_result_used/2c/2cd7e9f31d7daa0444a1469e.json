@@ -1,0 +1,1 @@
+{"id": "2cd7e9f31d7daa0444a1469e", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2488, "output_tokens": 52}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "most", "reason": "Assistant summarized all three PR comments in records 310 and 312, using details from the fetched comments."}, "ts": 1789153575.0971332}

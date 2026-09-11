@@ -1,0 +1,1 @@
+{"id": "b91e58074682a364c241982f", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 4239, "output_tokens": 50}, "result": {"was_result_referenced_later": false, "fraction_of_result_needed": "none", "reason": "No later record uses any path or information from this glob result; subsequent actions ignore it entirely."}, "ts": 1789153583.732883}

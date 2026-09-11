@@ -1,0 +1,1 @@
+{"id": "c31a88d3683c69b9f3fcfcf7", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2788, "output_tokens": 43}, "result": {"cause": "architecture_hub", "reason": "root.go is the CLI command registration hub; adding newRecapCmd requires editing it, and it's touched across many feature sessions."}, "ts": 1789153623.514522}

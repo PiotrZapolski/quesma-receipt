@@ -1,0 +1,22 @@
+# 5 sessions per harness, mixed sizes, all under 5 MB.
+# ids are transcript basenames (unique per file); see README for why.
+78d78cf0-b4c2-4e44-acfd-799a05efb6f8
+def93ebd-5df1-4d11-82c8-725fc06df5e6
+7a043fc4-0615-4667-8c86-ffb2aad9cf27
+bce9928c-3f8b-4b95-aa53-56af445a9bbc
+30109c33-1346-4fdb-b208-89480f9db798
+019d648c-fa81-72e0-a060-c568e0ae49f4
+019daa8f-b07d-7bf3-94e5-6168fa902c47
+019d92b2-f45f-7022-b2cc-928dc89d54db
+019edbd8-73f8-7981-8071-4156cbfaa27e
+019df577-ec82-7762-9785-d8e08f55f6b1
+ses_329e0e023ffe3G6H3oTwtDFfuw
+ses_3313b82d7ffeJdgZfChszuXyCK
+ses_33af98ec8ffehzoqSznbpoZl4u
+ses_30c636ebbffdm9Qdta8albPIpG
+ses_32c416dfeffetGeXfZ261XiDWq
+7c637173-9c0f-4d54-a290-1d6724f1b2b2
+b5ba8f62-2cd6-4886-8c94-1147c9f4f4fb-eb223f2e2cb0
+e7844da7-1a41-494a-af17-8d09ae557712
+b3d351e0-4564-428f-b7a2-288314d06476
+410d9d3c-7a34-4e29-b884-e492a61ca741-6f92e3c9b6a2

@@ -1,0 +1,1 @@
+{"id": "cbb18b299a31a825a431930f", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2106, "output_tokens": 56}, "result": {"was_result_referenced_later": false, "fraction_of_result_needed": "none", "reason": "No later record uses content from the 47k-char server.zig read; subsequent rg searches and outputs are independent."}, "ts": 1789153573.436776}

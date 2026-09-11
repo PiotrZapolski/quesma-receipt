@@ -1,0 +1,1 @@
+{"id": "52c2de65cc0242c33666b5ba", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2054, "output_tokens": 52}, "result": {"was_result_referenced_later": false, "fraction_of_result_needed": "none", "reason": "No later record uses the browser sweep metrics or screenshots; subsequent work shifts to Font Awesome CI tracing."}, "ts": 1789153579.984114}

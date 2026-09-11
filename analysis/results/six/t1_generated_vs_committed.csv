@@ -1,0 +1,10 @@
+agent,mode,sessions,gen_lines_est,committed_lines,pct_survive_est,usd,usd_per_committed_line
+claude_code,collab,1404,1086816.0,2085977,191.9,18562.0,0.0089
+claude_code,human,1611,1321923.0,10962446,829.3,29356.0,0.0027
+claude_code,vibe,2711,1431976.0,730640,51.0,25031.0,0.0343
+codex,collab,112,174824.0,281775,161.2,2677.0,0.0095
+codex,human,108,208229.0,653242,313.7,2784.0,0.0043
+codex,vibe,379,567394.0,97763,17.2,7481.0,0.0765
+opencode,collab,46,52651.0,83524,158.6,131.0,0.0016
+opencode,human,73,48118.0,94550,196.5,99.0,0.001
+opencode,vibe,83,116522.0,29540,25.4,481.0,0.0163

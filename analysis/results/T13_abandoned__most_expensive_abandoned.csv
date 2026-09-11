@@ -1,0 +1,21 @@
+session_id,agent,repo,mode,session_cost_usd,n_calls,n_human_turns,n_tool_calls,outcome
+2cae28a4-28e8-4bfa-9225-7682543f3664,claude_code,scottdensmore/MovieSwiftUI,unknown,1677.615312600007,5929,342,6000,no attribution
+019e8c4a-fce8-7c63-a3e9-08fd96884c12-e096ea147a34,codex,evorto-app/app,unknown,1069.808071999999,10592,318,17033,no attribution
+3f097ff1-5bb6-4622-8cfe-35782dd270ba,claude_code,pcastelo/lock_code_manager,unknown,988.7759309999974,3466,450,3237,no attribution
+019e8c4a-fce8-7c63-a3e9-08fd96884c12-ba3d321274cb,codex,evorto-app/app,unknown,832.6147090000011,8223,260,13181,no attribution
+6629a885-3d0f-45f3-b34c-af9881428368,claude_code,pcastelo/lock_code_manager,unknown,700.9331400000002,2527,266,2657,no attribution
+f007f8e0-8e15-49f8-9b78-ca4730e9a56f,claude_code,raman325/lock_code_manager,unknown,676.3657460000001,2037,133,1985,no attribution
+cc0f3de4-3b06-47d4-bc8e-3752f9786504,claude_code,TheurgicDuke771/DataQ,human,513.8596180000004,1826,86,1786,zero committed lines
+a654b6ca-4957-4d7c-8c99-62db313ff0a0,claude_code,entireio/cli-checkpoints,human,402.64063424999966,1165,190,1128,zero committed lines
+0bc8148b-2e5a-476e-be1e-cf08b88d6fd8,claude_code,marin-community/marin,human,380.76032200000043,926,167,844,zero committed lines
+019df9cd-55af-78a1-ba56-85910d0fd078-6778b9191d07,codex,entireio/cli-checkpoints,unknown,374.2182710000008,3918,184,2822,no attribution
+86f7230f-16a2-4201-9dae-105c1789c2c6,claude_code,scottdensmore/Cakebrew,unknown,320.9353950000003,1043,89,1020,no attribution
+064836b9-90e4-42d5-aabc-ed5fde831a57,claude_code,FSM1/cipher-box,unknown,295.561905,673,76,678,no attribution
+737704b2-0d90-4bb4-bf1c-59b70e20a2e6,claude_code,fogodev/ars-ui,unknown,285.47625599999975,838,14,839,no attribution
+b1ed7d58-eb6b-498c-931f-1f6f207e13c3,claude_code,entireio/cli-checkpoints,unknown,278.8612940000001,964,40,927,no attribution
+9a29d9ba-5e22-4e92-a5d0-017356e28328,claude_code,entireio/cli-checkpoints,vibe,277.92809799999964,1019,72,953,zero committed lines
+8619ea54-7ffc-44fb-96ff-4c199b70945e,claude_code,scottdensmore/antigravity-brain-visualizer,unknown,277.8191525000005,689,40,678,no attribution
+11232391-c5e3-4f6c-9dfc-75ed12f9e103,claude_code,fogodev/ars-ui,vibe,267.1650384999999,714,11,705,zero committed lines
+3af9f603-f1ee-4a00-b691-0e66b3030165,claude_code,jakobtfaber/dsa110-FLITS,unknown,254.96630649999997,1249,113,1164,no attribution
+019e92f8-84a9-7fc0-bf0e-061072d47c47,codex,fogodev/ars-ui,unknown,250.54937100000004,1959,114,3092,no attribution
+019ed138-54c9-72c2-a294-7cd525eddd48,codex,fogodev/ars-ui,unknown,249.58993300000014,2121,107,3507,no attribution

@@ -1,0 +1,2 @@
+compaction_boundaries,sessions_with_a_boundary,reads_in_the_20_tool_calls_after_a_boundary,pct_of_those_reads_already_seen,reread_chars,usd_of_the_rereads_first_pass_only,usd_of_the_rereads_at_cache_write_price
+2907,1048,8217,56.44395764877692,35346980,4.202732774999995,52.534159687500065

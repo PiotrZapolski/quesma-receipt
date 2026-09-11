@@ -1,0 +1,1 @@
+{"id": "07c2f5c0ffd3778f8894159b", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2193, "output_tokens": 55}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Assistant used only PR state/open/mergeable from the result in record 4371; no other fields were referenced."}, "ts": 1789153577.000213}

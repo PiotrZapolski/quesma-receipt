@@ -1,0 +1,1 @@
+{"id": "73d4e8ae98cdf0f22bfb14f3", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 4617, "output_tokens": 48}, "result": {"was_result_referenced_later": false, "fraction_of_result_needed": "none", "reason": "No later record uses information from this result; subsequent actions only inspect local repo state."}, "ts": 1789153575.612322}

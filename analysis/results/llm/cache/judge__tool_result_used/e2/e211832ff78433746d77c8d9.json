@@ -1,0 +1,1 @@
+{"id": "e211832ff78433746d77c8d9", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 3876, "output_tokens": 56}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later assistant text at 18265 references the Font Awesome 401 from this result to switch to non-Docker dev server."}, "ts": 1789153602.5976331}

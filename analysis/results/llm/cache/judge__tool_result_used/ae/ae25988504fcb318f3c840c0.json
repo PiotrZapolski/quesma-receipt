@@ -1,0 +1,1 @@
+{"id": "ae25988504fcb318f3c840c0", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 3003, "output_tokens": 57}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later assistant text cites 'Font Awesome auth path' and 'older head' from this result; only a few lines were used."}, "ts": 1789153602.9833841}

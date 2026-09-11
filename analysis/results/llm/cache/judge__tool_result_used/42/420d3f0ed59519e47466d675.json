@@ -1,0 +1,1 @@
+{"id": "420d3f0ed59519e47466d675", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1786, "output_tokens": 54}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "The failing assertion about 'CI reliability' was used to patch stabilization-source.spec.ts in record 5495."}, "ts": 1789153608.100207}

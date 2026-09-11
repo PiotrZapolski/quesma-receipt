@@ -1,0 +1,1 @@
+{"id": "e49ece5870af70c72844e6de", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 8784, "output_tokens": 52}, "result": {"was_result_referenced_later": false, "fraction_of_result_needed": "none", "reason": "No later record references the types.ts content; subsequent reads focus on checkpoint/git and tsconfig files."}, "ts": 1789153587.864824}

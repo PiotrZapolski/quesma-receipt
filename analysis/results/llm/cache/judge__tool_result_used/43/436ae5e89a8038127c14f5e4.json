@@ -1,0 +1,1 @@
+{"id": "436ae5e89a8038127c14f5e4", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1440, "output_tokens": 51}, "result": {"was_result_referenced_later": false, "fraction_of_result_needed": "none", "reason": "No later record uses information from this git log output; the next call simply requests the remaining entries."}, "ts": 1789153577.255306}

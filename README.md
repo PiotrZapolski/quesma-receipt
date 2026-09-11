@@ -32,6 +32,19 @@ The closing slide prints five lines from the analysis summary (cache reads 74 60
 | [`SIX_THESES.md`](SIX_THESES.md) | Source research for the six line items. Polish, tables and definitions. |
 | [`FINDINGS.md`](FINDINGS.md) | Full analysis the deck is cut from. Polish, method, ledger, all the numbers. |
 
+## Analysis code and dataset
+
+The numbers on the receipt come from `analysis/`, the full pipeline that produced `FINDINGS.md` and `SIX_THESES.md`. It is the extraction layer (`build_ledger.py` turns 9 770 raw JSONL transcripts into five flat Parquet tables), the 24 theses as DuckDB SQL in `analysis/queries/`, raw-file probes (`raw_probes.py`), the two LLM layers in `analysis/llm/` (DeepSeek V4-Flash prompt classification, DeepSeek V4-Pro judge), and every result table in `analysis/results/`. `analysis/DESIGN.md` explains the four layers, `analysis/README.md` how to run them.
+
+Two things are not in this repo because of size. The raw dataset (17,8 GB) is public: [QuesmaOrg/trajectories-dataset, swe-chat-enhanced-2026-07-05](https://github.com/QuesmaOrg/trajectories-dataset/blob/main/datasets/swe-chat-enhanced-2026-07-05/README.md). The derived ledger (248 MB of Parquet plus a 401 MB DuckDB file) is rebuilt from it in about 24 seconds on 6 cores:
+
+```bash
+uv run --with duckdb --with orjson --with pyarrow analysis/build_ledger.py --out analysis/ledger --workers 6
+uv run --with duckdb analysis/run_queries.py --rebuild
+```
+
+`analysis/ledger_sample/` (3 MB) is a small validated slice that lets the queries run without the full download.
+
 ## Architecture in one paragraph
 
 There is no build step and no module system. Nine plain `<script defer>` tags load in a fixed order and each one exposes exactly one global: `RECEIPT_DATA` (all copy, all numbers), `Charts`, `Halftone`, `Scenes`, `Render`, `Motion`. Nothing runs at load time except `main.js`, which waits for `DOMContentLoaded` and then `document.fonts.ready`, builds the whole DOM from the data object, registers every `canvas[data-scene]` with the halftone engine, wires GSAP, and refreshes ScrollTrigger. Every boot step is wrapped, so a broken module logs and the page still renders. Scrolling behaves like a deck: CSS `scroll-snap-type: y mandatory` snaps one section per screen, each slide plays a print-reveal timeline once when it enters (a clip-path wipe with a printhead line chasing the edge), ArrowDown / ArrowUp / PageDown / PageUp / Space / Home / End jump between slides, and the header shows a slide counter next to the running total. Below 900px wide or 620px tall the deck turns itself off and becomes a normal scrolling page.

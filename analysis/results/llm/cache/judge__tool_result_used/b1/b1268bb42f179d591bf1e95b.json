@@ -1,0 +1,1 @@
+{"id": "b1268bb42f179d591bf1e95b", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 3799, "output_tokens": 49}, "result": {"was_result_referenced_later": false, "fraction_of_result_needed": "none", "reason": "No later record uses information from this grep result; subsequent calls read sections and files independently."}, "ts": 1789153578.43051}

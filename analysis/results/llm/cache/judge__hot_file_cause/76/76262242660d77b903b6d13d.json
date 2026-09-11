@@ -1,0 +1,1 @@
+{"id": "76262242660d77b903b6d13d", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1741, "output_tokens": 46}, "result": {"cause": "agent_regression", "reason": "The agent's previous optimization caused a hang on no-op reruns; this edit gates repair on freshlyPackedRefs to fix its own damage."}, "ts": 1789153617.1565251}

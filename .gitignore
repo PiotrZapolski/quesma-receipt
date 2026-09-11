@@ -1,2 +1,6 @@
 .DS_Store
 node_modules/
+# analysis artifacts too big for git (rebuild with analysis/build_ledger.py)
+analysis/ledger/
+analysis/ledger.duckdb
+__pycache__/

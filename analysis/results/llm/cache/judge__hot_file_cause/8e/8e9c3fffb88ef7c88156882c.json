@@ -1,0 +1,1 @@
+{"id": "8e9c3fffb88ef7c88156882c", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2370, "output_tokens": 42}, "result": {"cause": "agent_regression", "reason": "Agent is reordering pipeline.Clean and redact calls across multiple functions in the same file, fixing its own previous ordering mistakes."}, "ts": 1789153616.5919309}

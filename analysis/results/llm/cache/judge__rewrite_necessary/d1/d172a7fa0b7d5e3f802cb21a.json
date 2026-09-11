@@ -1,0 +1,1 @@
+{"id": "d172a7fa0b7d5e3f802cb21a", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1295, "output_tokens": 50}, "result": {"was_full_rewrite_needed": false, "estimated_lines_actually_changed": 2, "reason": "Only added DBT_RUN_SECRET env var and Authorization header; rest of file unchanged."}, "ts": 1789153539.432981}

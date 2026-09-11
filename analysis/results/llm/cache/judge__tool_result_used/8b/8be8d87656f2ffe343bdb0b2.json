@@ -1,0 +1,1 @@
+{"id": "8be8d87656f2ffe343bdb0b2", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1826, "output_tokens": 56}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later assistant text at [6140] cites the green validation (lint pass, 53 tests passed) from this result."}, "ts": 1789153609.749603}

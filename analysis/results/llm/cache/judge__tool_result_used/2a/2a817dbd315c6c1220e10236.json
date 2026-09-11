@@ -1,0 +1,1 @@
+{"id": "2a817dbd315c6c1220e10236", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2923, "output_tokens": 52}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later records reference schema fields like sessions, projects, and usage columns; only a few lines were needed."}, "ts": 1789153580.5930848}

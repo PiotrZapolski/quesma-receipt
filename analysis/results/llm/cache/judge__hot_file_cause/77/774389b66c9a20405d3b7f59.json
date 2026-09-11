@@ -1,0 +1,1 @@
+{"id": "774389b66c9a20405d3b7f59", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1773, "output_tokens": 41}, "result": {"cause": "agent_regression", "reason": "The agent is editing common.go to trim a doc comment it previously added, as part of a cleanup pass after tests pass."}, "ts": 1789153619.980149}

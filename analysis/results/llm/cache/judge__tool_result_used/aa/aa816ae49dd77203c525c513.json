@@ -1,0 +1,1 @@
+{"id": "aa816ae49dd77203c525c513", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 4048, "output_tokens": 51}, "result": {"was_result_referenced_later": false, "fraction_of_result_needed": "none", "reason": "No later record uses information from this rg output; subsequent calls focus on CI status and unrelated files."}, "ts": 1789153604.63171}

@@ -1,0 +1,1 @@
+{"id": "78c3a5528bd07cc98c04ad97", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 4483, "output_tokens": 57}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later assistant text at 5902 summarizes the 401 from npm.fontawesome.com, using only the failure line from the log."}, "ts": 1789153609.739847}

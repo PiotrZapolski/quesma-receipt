@@ -1,0 +1,1 @@
+{"id": "5541ca7003bd782f63dac794", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1729, "output_tokens": 47}, "result": {"cause": "agent_regression", "reason": "Agent changed buildInvestigateDeps signature and removed newInvestigateAttachCmd, causing build errors, then fixed root.go but left test files broken."}, "ts": 1789153623.4134898}

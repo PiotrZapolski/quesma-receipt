@@ -1,0 +1,1 @@
+{"id": "7dd149596554906b2d249c2c", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 3069, "output_tokens": 45}, "result": {"cause": "agent_regression", "reason": "Agent removed 'testing' import and changed test-mode check to interactive.UnderTest(), but file was modified since read, causing repeated edit errors."}, "ts": 1789153616.231539}

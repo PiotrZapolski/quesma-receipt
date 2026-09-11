@@ -1,0 +1,1 @@
+{"id": "4a8416f213701364ba07df33", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2042, "output_tokens": 40}, "result": {"cause": "architecture_hub", "reason": "attach.go is a central CLI command file touched by many features; this edit adds review prompt override plumbing across attach flows."}, "ts": 1789153618.287266}

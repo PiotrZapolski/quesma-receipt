@@ -1,0 +1,4 @@
+agent,event_kind,boundaries,sessions
+claude_code,compact_boundary,1334,720
+codex,compacted,1235,302
+claude_code,microcompact_boundary,338,45

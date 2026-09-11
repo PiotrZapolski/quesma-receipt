@@ -1,0 +1,1 @@
+{"id": "c0eddb4bee953f17ae468ddd", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2492, "output_tokens": 56}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later test file imports setup, teardown, openReader, BASE_URL from helpers.js; only those exports were used."}, "ts": 1789153579.106953}

@@ -1,0 +1,1 @@
+{"id": "6f3fc19daad6aa563c8a66bd", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 4980, "output_tokens": 51}, "result": {"was_result_referenced_later": false, "fraction_of_result_needed": "none", "reason": "No later record uses information from the GitHub repo page; subsequent fetches target docs and code directly."}, "ts": 1789153575.30366}

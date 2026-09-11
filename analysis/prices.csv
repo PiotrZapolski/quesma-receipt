@@ -1,0 +1,11 @@
+model_pattern,provider,p_input,p_cache_read,p_cache_write_5m,p_cache_write_1h,p_output
+claude-opus-4-%,anthropic,5,0.5,6.25,10,25
+claude-sonnet-4-%,anthropic,3,0.3,3.75,6,15
+claude-sonnet-5%,anthropic,2,0.2,2.5,4,10
+claude-fable-5%,anthropic,10,1,12.5,20,50
+claude-opus-5%,anthropic,5,0.5,6.25,10,25
+claude-haiku-4-5%,anthropic,1,0.1,1.25,2,5
+gpt-5.5%,openai,5,0.5,,,30
+gpt-5.4-mini%,openai,0.75,0.075,,,4.5
+gpt-5.4%,openai,2.5,0.25,,,15
+gpt-5.3-codex%,openai,1.75,0.175,,,14

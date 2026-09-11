@@ -1,0 +1,1 @@
+{"id": "4d831f64063b2a8d8a46682b", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 3560, "output_tokens": 57}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later record 14640 used the viewport matrix concept and file list from the grep output to check viewportSizes loops."}, "ts": 1789153600.196789}

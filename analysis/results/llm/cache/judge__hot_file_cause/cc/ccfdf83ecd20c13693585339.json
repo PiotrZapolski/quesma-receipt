@@ -1,0 +1,1 @@
+{"id": "ccfdf83ecd20c13693585339", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1705, "output_tokens": 46}, "result": {"cause": "agent_regression", "reason": "Agent removed settings.IsTrailsDisabled() check from lifecycle.go after earlier edits, then cleans up unused import, indicating self-correction of prior changes."}, "ts": 1789153622.709516}

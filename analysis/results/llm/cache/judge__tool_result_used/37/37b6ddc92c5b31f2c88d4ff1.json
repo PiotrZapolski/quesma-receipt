@@ -1,0 +1,1 @@
+{"id": "37b6ddc92c5b31f2c88d4ff1", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2159, "output_tokens": 53}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "The failure message in the test output was used to identify the exact assertion to update in record 20830."}, "ts": 1789153604.373792}

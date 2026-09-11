@@ -1,0 +1,12 @@
+agent,tool_kind,calls,missing_path_errors,pct_missing_path
+claude_code,edit,133185,1042,0.7823703870555994
+claude_code,read,144080,802,0.556635202665186
+opencode,read,15867,140,0.8823344047393963
+opencode,edit,4195,5,0.11918951132300358
+cursor,read,1734,0,0.0
+opencode,write,1111,0,0.0
+claude_code,write,21118,0,0.0
+codex,edit,24569,0,0.0
+codex,write,1080,0,0.0
+cursor,edit,1313,0,0.0
+cursor,write,516,0,0.0

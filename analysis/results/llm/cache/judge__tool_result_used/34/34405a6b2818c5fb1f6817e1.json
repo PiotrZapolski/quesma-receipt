@@ -1,0 +1,1 @@
+{"id": "34405a6b2818c5fb1f6817e1", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2305, "output_tokens": 54}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later exec at [929] used the recent commits and file paths from the result to run validation and stage files."}, "ts": 1789153576.5969422}

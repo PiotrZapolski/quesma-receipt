@@ -1,0 +1,1 @@
+{"id": "8c9e86dca95268d64e25e0d5", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1192, "output_tokens": 36}, "result": {"cause": "agent_regression", "reason": "Agent temporarily disabled a filter, then re-enabled it after tests failed, fixing its own prior damage."}, "ts": 1789153622.281749}

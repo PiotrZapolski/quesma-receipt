@@ -1,0 +1,1 @@
+{"id": "a96ffc25c04c66017615ce1d", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1755, "output_tokens": 45}, "result": {"cause": "architecture_hub", "reason": "settings.go is a central settings file that gets renamed identifiers across many sessions; this slice shows a rename from CustomRef to V1CustomRef."}, "ts": 1789153617.169156}

@@ -1,0 +1,1 @@
+{"id": "263bd908dbc38e33e422ed0a", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2846, "output_tokens": 56}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later record [52] used the diff stat to filter out .next artifacts, needing only the summary line and file list."}, "ts": 1789153586.528866}

@@ -1,0 +1,1 @@
+{"id": "1b5b3426a8f82e4436ee1d7c", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2349, "output_tokens": 45}, "result": {"cause": "agent_regression", "reason": "The agent changed CheckpointID to a custom type, causing build errors across multiple files, then edited explain.go to fix its own type mismatch."}, "ts": 1789153625.250592}

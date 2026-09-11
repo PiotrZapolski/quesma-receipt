@@ -1,0 +1,1 @@
+{"id": "b55b6eb232bdb73c46b7c019", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1812, "output_tokens": 43}, "result": {"cause": "agent_regression", "reason": "The agent's own `gsd-tools phase complete` run regressed STATE.md body lines, and this edit restores them."}, "ts": 1789153613.756719}

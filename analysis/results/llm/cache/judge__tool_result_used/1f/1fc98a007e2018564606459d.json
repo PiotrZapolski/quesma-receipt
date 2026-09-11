@@ -1,0 +1,1 @@
+{"id": "1fc98a007e2018564606459d", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 3650, "output_tokens": 58}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Record 432 uses the ADR list to determine next ADR number is 053; only the highest-numbered filename was needed."}, "ts": 1789153578.697518}

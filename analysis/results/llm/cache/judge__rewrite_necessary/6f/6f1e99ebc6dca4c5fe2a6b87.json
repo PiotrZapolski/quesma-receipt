@@ -1,0 +1,1 @@
+{"id": "6f1e99ebc6dca4c5fe2a6b87", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 730, "output_tokens": 54}, "result": {"was_full_rewrite_needed": true, "estimated_lines_actually_changed": 1, "reason": "The file /tmp/test.txt was created new with a single line of content, so a full write was necessary."}, "ts": 1789153544.484159}

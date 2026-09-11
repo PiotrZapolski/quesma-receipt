@@ -1,0 +1,1 @@
+{"id": "122a456150952d15ffb8fc96", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 3449, "output_tokens": 60}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "most", "reason": "Later Edit [2620] and update_issue [2624] used the plan content, including Bug 3 details and repo parameter note."}, "ts": 1789153587.575058}

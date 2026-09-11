@@ -1,0 +1,21 @@
+session_id,seq,agent,tool_kind,what,result_chars,later_calls,rent_tokens,rent_usd
+019df9cd-55af-78a1-ba56-85910d0fd078-6778b9191d07,45,codex,other,,180592,3914,176709272.0,88.354636
+019df9cd-55af-78a1-ba56-85910d0fd078-f15a3e31c54b,45,codex,other,,180592,3760,169756480.0,84.87824
+019e8c4a-fce8-7c63-a3e9-08fd96884c12-e096ea147a34,64,codex,bash,"rg -n ""TODO|Gap|gap|Open|open|block|Block|missing|Missing|Next|next|vi",40156,10585,106262815.0,53.1314075
+019e8c4a-fce8-7c63-a3e9-08fd96884c12-e096ea147a34,188,codex,bash,bun run format:write,40156,10572,106132308.0,53.066154
+019e8c4a-fce8-7c63-a3e9-08fd96884c12-e096ea147a34,724,codex,bash,bun run format:write,40156,10497,105379383.0,52.6896915
+019e8c4a-fce8-7c63-a3e9-08fd96884c12-e096ea147a34,931,codex,bash,bun run format:write,40156,10469,105098291.0,52.5491455
+019e8c4a-fce8-7c63-a3e9-08fd96884c12-e096ea147a34,1095,codex,bash,"rg -n ""translate|right:|left:|width:|min-width:|100vw|vw|fixed"" /tmp/e",40153,10449,104889674.25,52.444837125
+019e8c4a-fce8-7c63-a3e9-08fd96884c12-e096ea147a34,1134,codex,bash,bun run format:write,40156,10444,104847316.0,52.423658
+019e8c4a-fce8-7c63-a3e9-08fd96884c12-e096ea147a34,1269,codex,bash,bun run format:write,40156,10428,104686692.0,52.343346
+cc0f3de4-3b06-47d4-bc8e-3752f9786504,2945,claude_code,read,/Users/arijit/Coding/Python/DataQ/live-login.png,348894,1200,104668200.0,52.3341
+019e8c4a-fce8-7c63-a3e9-08fd96884c12-e096ea147a34,1415,codex,bash,"sed -n '620,1040p' STABILIZATION.md",40153,10410,104498182.5,52.24909125
+019e8c4a-fce8-7c63-a3e9-08fd96884c12-e096ea147a34,1413,codex,bash,"rg -n ""TODO|FIXME|blocker|remain|remaining|out of scope|later|manual|B",40152,10410,104495580.0,52.24779
+019e8c4a-fce8-7c63-a3e9-08fd96884c12-e096ea147a34,1504,codex,bash,bun run format:write,40156,10400,104405600.0,52.2028
+019e8c4a-fce8-7c63-a3e9-08fd96884c12-e096ea147a34,1555,codex,bash,cat /Users/hedde/.codex/plugins/cache/openai-bundled/browser/26.601.21,40132,10394,104283002.0,52.141501
+019e8c4a-fce8-7c63-a3e9-08fd96884c12-e096ea147a34,1756,codex,bash,"rg ""Organize this event|Participants|Event Details|Description|Registe",40152,10367,104063946.0,52.031973
+019e8c4a-fce8-7c63-a3e9-08fd96884c12-e096ea147a34,1789,codex,bash,bun run format:write,40156,10363,104034157.0,52.0170785
+019e8c4a-fce8-7c63-a3e9-08fd96884c12-e096ea147a34,2032,codex,bash,"sed -n '480,620p' STABILIZATION.md && sed -n '1880,2090p' STABILIZATIO",40152,10329,103682502.0,51.841251
+019e8c4a-fce8-7c63-a3e9-08fd96884c12-e096ea147a34,2042,codex,bash,"rg -n ""finance|receipt|tax-rate|viewport|layout|overflow|direct-route|",40147,10328,103659554.0,51.829777
+019e8c4a-fce8-7c63-a3e9-08fd96884c12-e096ea147a34,2121,codex,bash,bun run format:write,40156,10320,103602480.0,51.80124
+019e8c4a-fce8-7c63-a3e9-08fd96884c12-e096ea147a34,2160,codex,bash,cat /Users/hedde/.codex/plugins/cache/openai-bundled/browser/26.601.21,40132,10316,103500428.0,51.750214

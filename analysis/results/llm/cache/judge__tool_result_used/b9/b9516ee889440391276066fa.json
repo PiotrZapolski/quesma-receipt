@@ -1,0 +1,1 @@
+{"id": "b9516ee889440391276066fa", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2435, "output_tokens": 53}, "result": {"was_result_referenced_later": false, "fraction_of_result_needed": "none", "reason": "No later record uses the formatter output; subsequent diff and validation commands rely on files, not this result."}, "ts": 1789153607.515423}

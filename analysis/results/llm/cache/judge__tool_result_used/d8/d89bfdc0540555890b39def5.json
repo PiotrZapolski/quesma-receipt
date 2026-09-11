@@ -1,0 +1,1 @@
+{"id": "d89bfdc0540555890b39def5", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1949, "output_tokens": 57}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Assistant cited the passed format/lint/tests/diff check in record 8565; only the final summary lines were needed."}, "ts": 1789153597.5908391}

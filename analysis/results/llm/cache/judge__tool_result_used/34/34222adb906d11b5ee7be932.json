@@ -1,0 +1,1 @@
+{"id": "34222adb906d11b5ee7be932", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2772, "output_tokens": 54}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later record 12079 references the blocked navigation and stale tab state from this result to switch to a fresh tab."}, "ts": 1789153571.7681952}

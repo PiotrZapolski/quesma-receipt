@@ -1,0 +1,1 @@
+{"id": "73ec3dd16231addb50ef0419", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2822, "output_tokens": 53}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later assistant summary at [524] used test counts from the result, but only the summary lines were needed."}, "ts": 1789153579.598229}

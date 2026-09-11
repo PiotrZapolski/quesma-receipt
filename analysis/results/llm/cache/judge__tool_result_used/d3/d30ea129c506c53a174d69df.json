@@ -1,0 +1,1 @@
+{"id": "d30ea129c506c53a174d69df", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1775, "output_tokens": 53}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "The later apply_patch at [16364] uses the failure details from this result to adjust the assertion."}, "ts": 1789153601.5060952}

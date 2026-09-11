@@ -1,0 +1,1 @@
+{"id": "f33a4944a02d54f23d7ac57d", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2247, "output_tokens": 46}, "result": {"cause": "agent_regression", "reason": "Agent is replacing go-git worktree status calls with gitutil shims to fix index corruption (ENT-242), editing the same file repeatedly."}, "ts": 1789153614.143192}

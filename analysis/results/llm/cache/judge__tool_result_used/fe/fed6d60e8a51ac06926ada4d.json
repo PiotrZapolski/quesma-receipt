@@ -1,0 +1,1 @@
+{"id": "fed6d60e8a51ac06926ada4d", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1092, "output_tokens": 50}, "result": {"was_result_referenced_later": false, "fraction_of_result_needed": "none", "reason": "No later record uses information from the image; subsequent calls only crop and read a different file."}, "ts": 1789153571.77125}

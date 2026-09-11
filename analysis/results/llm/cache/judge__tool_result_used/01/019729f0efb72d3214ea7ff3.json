@@ -1,0 +1,1 @@
+{"id": "019729f0efb72d3214ea7ff3", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 3131, "output_tokens": 55}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "most", "reason": "The plan content was reused in the ExitPlanMode call at record 1134, which included the full plan text."}, "ts": 1789153588.952151}

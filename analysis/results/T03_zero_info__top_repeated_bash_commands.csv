@@ -1,0 +1,21 @@
+command_head_90,repeated_occurrences,sessions,repeated_chars
+"scripts=""/home/armel/Projects/OSS/bmad-module-skill-forge/.claude/skills/bmad-story-automa",1023,4,201399
+git status,166,2001,60773
+git status --short,152,1526,33609
+,147,177,15435
+"gcloud storage ls ""gs://marin-us-central1/evaluation/harbor/open-thoughts__OpenThoughts-TB",140,7,6999
+go build ./... 2>&1 | head -10,126,38,3906
+pnpm --filter @dayhaysoos/nimbus-worker test,101,109,93200
+go build ./... 2>&1,96,75,3048
+/usr/local/go/bin/go build -o safecast-new-map ./cmd/unified-server/ 2>&1,93,13,3543
+go build ./... 2>&1 | head -20,87,57,2697
+git diff --stat,87,1579,57230
+mise run lint 2>&1,85,302,5014
+"uv run scripts/ray/cluster.py --cluster us-east5-a list-jobs 2>&1 | grep -A8 ""REDACTED"" | ",75,1,1809
+"bash -lc "". \""$HOME/.nvm/nvm.sh\"" && nvm use >/dev/null && pnpm --filter @dayhaysoos/nimbu",73,1,28857
+gcloud storage cat gs://marin-us-central1/evaluation/harbor/terminal-bench/nemotron-termin,71,1,497
+mise run fmt 2>&1,59,185,1224
+go build ./... 2>&1 | head -30,59,77,1912
+cargo +nightly-2025-11-30 fmt --all -- --check 2>&1,58,56,1885
+go build ./...,55,87,1379
+mise run fmt,54,200,1180

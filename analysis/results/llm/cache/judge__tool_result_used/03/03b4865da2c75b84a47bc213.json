@@ -1,0 +1,1 @@
+{"id": "03b4865da2c75b84a47bc213", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1685, "output_tokens": 55}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "The failure output identified the localhost URL in the Browser review queue, leading to the patch in record 12197."}, "ts": 1789153598.508173}

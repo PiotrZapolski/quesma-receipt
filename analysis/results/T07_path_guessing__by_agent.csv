@@ -1,0 +1,5 @@
+agent,file_tool_calls,missing_path_errors,pct_missing_path,sessions_affected,usd_of_next_3_calls
+claude_code,298383,1844,0.6179976741302285,1132,635.8011512000004
+opencode,21173,145,0.6848344589807774,77,8.056464350000006
+codex,25649,0,0.0,0,
+cursor,3563,0,0.0,0,

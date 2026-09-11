@@ -1,0 +1,1 @@
+{"id": "d3519f88652c1feb91698db5", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2067, "output_tokens": 53}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later record 13883 cites the failing assertion from the test output; only the specific failure details were needed."}, "ts": 1789153599.93135}

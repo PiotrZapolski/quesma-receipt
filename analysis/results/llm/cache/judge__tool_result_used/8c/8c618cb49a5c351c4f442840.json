@@ -1,0 +1,1 @@
+{"id": "8c618cb49a5c351c4f442840", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 8108, "output_tokens": 57}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later grep/read in db.ts used the task ID regex and generateWorkspaceTaskId pattern from this file's queue test."}, "ts": 1789153587.983181}

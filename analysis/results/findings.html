@@ -1,0 +1,1107 @@
+<title>Rachunek za tokeny</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  color-scheme: light;
+
+  /* cool-biased neutral ground: a statement sheet on a grey desk */
+  --ground:      #e7eaf0;
+  --panel:       #f3f4f7;
+  --panel-edge:  #d3d8e2;
+  --ink:         #131820;
+  --ink-2:       #4b5462;
+  --ink-3:       #6f7a8a;
+  --rule:        #c9cfda;
+  --grid:        #dde1e9;
+  --wash:        #e9ecf2;
+
+  /* categorical - validated (light, surface #f3f4f7, adjacent pairs) */
+  --s-input:     #d4483f;   /* fresh input */
+  --s-cwrite:    #15a08a;   /* cache write */
+  --s-cread:     #2f6fd0;   /* cache read  */
+  --s-output:    #d97516;   /* output      */
+
+  --accent:      #2f6fd0;   /* machine / cache */
+  --human:       #d97516;   /* human           */
+
+  /* ordinal blue ramp - validated (light: light end 2,18:1) */
+  --ord-1: #77abe8;
+  --ord-2: #5992dd;
+  --ord-3: #3d79cf;
+  --ord-4: #2c62b3;
+  --ord-5: #234e94;
+  --ord-6: #1a3d76;
+
+  --good:    #0ca30c;
+  --warning: #fab219;
+  --critical:#d03b3b;
+
+  --font-display: "Archivo Narrow", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --ground:      #090b0e;
+    --panel:       #12151a;
+    --panel-edge:  #262c36;
+    --ink:         #eef1f6;
+    --ink-2:       #a9b2c0;
+    --ink-3:       #838d9b;
+    --rule:        #2b323c;
+    --grid:        #222833;
+    --wash:        #171b22;
+
+    --s-input:     #e8615a;
+    --s-cwrite:    #149b86;
+    --s-cread:     #4a8ae8;
+    --s-output:    #cf7f22;
+
+    --accent:      #4a8ae8;
+    --human:       #cf7f22;
+
+    --ord-1: #244e8d;
+    --ord-2: #2f62ae;
+    --ord-3: #4079cf;
+    --ord-4: #6093e0;
+    --ord-5: #7fabec;
+    --ord-6: #9fc4f6;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --ground:      #090b0e;
+  --panel:       #12151a;
+  --panel-edge:  #262c36;
+  --ink:         #eef1f6;
+  --ink-2:       #a9b2c0;
+  --ink-3:       #838d9b;
+  --rule:        #2b323c;
+  --grid:        #222833;
+  --wash:        #171b22;
+
+  --s-input:     #e8615a;
+  --s-cwrite:    #149b86;
+  --s-cread:     #4a8ae8;
+  --s-output:    #cf7f22;
+
+  --accent:      #4a8ae8;
+  --human:       #cf7f22;
+
+  --ord-1: #244e8d;
+  --ord-2: #2f62ae;
+  --ord-3: #4079cf;
+  --ord-4: #6093e0;
+  --ord-5: #7fabec;
+  --ord-6: #9fc4f6;
+}
+
+*{ box-sizing: border-box; }
+
+body{
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sheet{
+  max-width: 880px;
+  margin: 0 auto;
+  padding-inline: 20px;
+  padding-block: 28px 56px;
+}
+
+/* ---------- masthead ---------- */
+
+.mast{
+  background: var(--panel);
+  border: 1px solid var(--panel-edge);
+  border-top: 3px solid var(--accent);
+  padding: 26px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mast-top{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 14px;
+}
+
+.doc-kind{
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+h1{
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(38px, 11vw, 76px);
+  line-height: 0.94;
+  letter-spacing: -0.015em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.lede{
+  font-size: clamp(15px, 4vw, 18px);
+  color: var(--ink-2);
+  max-width: 60ch;
+  margin: 0;
+}
+
+.total-row{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px 28px;
+}
+.total-label{
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 2px;
+}
+.total-value{
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: clamp(40px, 12vw, 68px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.total-value .cur{ font-size: 0.42em; color: var(--ink-2); margin-left: 0.3em; letter-spacing: 0; }
+
+.total-side{
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-2);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.7;
+}
+.total-side b{ color: var(--ink); font-weight: 600; }
+
+/* ---------- line items ---------- */
+
+.item{
+  background: var(--panel);
+  border: 1px solid var(--panel-edge);
+  border-top: none;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.item-head{
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  gap: 4px 14px;
+  align-items: baseline;
+}
+.item-no{
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  padding-top: 4px;
+}
+.item-title{
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(22px, 6vw, 30px);
+  line-height: 1.08;
+  letter-spacing: -0.005em;
+  margin: 0;
+  text-wrap: balance;
+}
+.item-amount{
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--ink);
+}
+.claim{
+  grid-column: 2 / -1;
+  margin: 6px 0 0;
+  font-size: clamp(15px, 4vw, 17px);
+  color: var(--ink-2);
+  max-width: 62ch;
+}
+
+.note{
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--ink-3);
+  border-top: 1px solid var(--rule);
+  padding-top: 10px;
+  margin: 0;
+}
+.note b{ color: var(--ink-2); font-weight: 500; }
+
+/* ---------- chart primitives ---------- */
+
+.figure{ display: flex; flex-direction: column; gap: 14px; }
+
+.bar-svg{ display: block; overflow: visible; }
+.bar-svg rect{ transition: opacity .12s ease; }
+.bar-svg .mark:hover, .bar-svg .mark:focus-visible{ opacity: .82; outline: none; }
+.bar-svg .mark:focus-visible{ stroke: var(--ink); stroke-width: 2; }
+
+.legend{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.legend li{
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.legend .sw{
+  width: 10px; height: 10px; border-radius: 2px;
+  flex: none; transform: translateY(1px);
+}
+.legend .nm{ color: var(--ink); }
+.legend .vl{
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-2);
+}
+
+/* row chart: label | bar | value */
+.rows{ display: flex; flex-direction: column; gap: 9px; }
+.row{
+  display: grid;
+  grid-template-columns: minmax(92px, 148px) 1fr minmax(64px, auto);
+  gap: 10px 12px;
+  align-items: center;
+}
+.row .rl{ font-size: 13.5px; color: var(--ink); line-height: 1.3; }
+.row .rl small{
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--ink-3);
+  letter-spacing: 0.02em;
+}
+.row .rv{
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  color: var(--ink);
+}
+.row .rv small{ display: block; font-size: 10.5px; color: var(--ink-3); }
+.axis{
+  border-top: 1px solid var(--grid);
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--ink-3);
+  padding-top: 5px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* column chart */
+.cols{ display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; }
+.cols div{ text-align: center; }
+.cols .cl{ font-family: var(--font-mono); font-size: 11px; color: var(--ink-2); }
+.cols .cv{ font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+/* tiles */
+.tiles{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.tile{
+  background: var(--panel);
+  padding: 14px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.tile .tl{
+  font-size: 12.5px;
+  color: var(--ink-2);
+  line-height: 1.35;
+  min-height: 2.7em;
+}
+.tile .tv{
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.tile .tn{
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--ink-3);
+}
+
+/* caveats */
+.caveats{ margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.caveats li{
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+.caveats .dot{
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--warning);
+  transform: translateY(7px);
+}
+.caveats li b{ color: var(--ink); font-weight: 600; }
+
+/* footer */
+.foot{
+  border: 1px solid var(--panel-edge);
+  border-top: none;
+  background: var(--wash);
+  padding: 16px 24px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.8;
+  color: var(--ink-3);
+  letter-spacing: 0.01em;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 18px;
+  justify-content: space-between;
+}
+
+/* tooltip */
+#tip{
+  position: fixed;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -120%);
+  background: var(--ink);
+  color: var(--ground);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.45;
+  padding: 7px 10px;
+  border-radius: 4px;
+  max-width: 240px;
+  white-space: pre-line;
+  transition: opacity .1s ease;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.22);
+}
+#tip.on{ opacity: 1; }
+
+@media (max-width: 560px){
+  .item-head{ grid-template-columns: 26px 1fr; }
+  .item-amount{ grid-column: 2; font-size: 14px; }
+  .claim{ grid-column: 2; }
+  .row{ grid-template-columns: 1fr auto; }
+  .row .rbar{ grid-column: 1 / -1; order: 3; }
+  .row .rv{ order: 2; }
+  .total-side{ text-align: left; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ transition: none !important; animation: none !important; }
+}
+</style>
+
+<div class="sheet">
+
+  <!-- ================= HERO ================= -->
+  <header class="mast">
+    <div class="mast-top">
+      <span class="doc-kind">Zestawienie opłat / SWE-chat enhanced</span>
+      <span class="doc-kind">okres: cały zbiór / 2026-09-11</span>
+    </div>
+
+    <h1>Rachunek za tokeny</h1>
+
+    <p class="lede">Dziewięć tysięcy siedemset siedemdziesiąt sesji z agentami kodującymi, policzone linijka po linijce. Większość tej kwoty nie poszła na myślenie, tylko na przechowywanie i powtarzanie tego, co już raz zostało powiedziane.</p>
+
+    <div class="total-row">
+      <div>
+        <div class="total-label">Do zapłaty razem</div>
+        <div class="total-value">116&nbsp;677<span class="cur">USD</span></div>
+      </div>
+      <div class="total-side">
+        Claude Code <b>96&nbsp;741 USD</b><br>
+        Codex <b>19&nbsp;048 USD</b><br>
+        OpenCode <b>887 USD</b><br>
+        Cursor <b>brak wyceny</b>
+      </div>
+    </div>
+
+    <div class="figure">
+      <svg class="bar-svg" width="100%" height="26" role="img" aria-label="Struktura rachunku: świeży input 4,6 procent, zapis cache 22,3 procent, odczyt cache 63,8 procent, output 9,2 procent">
+        <rect class="mark" tabindex="0" x="0"       y="0" width="4.588%"  height="26" fill="var(--s-input)"  data-tip="Świeży input&#10;5 354 USD  ·  4,6%"></rect>
+        <rect class="mark" tabindex="0" x="4.588%"  y="0" width="22.333%" height="26" fill="var(--s-cwrite)" data-tip="Zapis cache&#10;26 057 USD  ·  22,3%"></rect>
+        <rect class="mark" tabindex="0" x="26.921%" y="0" width="63.848%" height="26" fill="var(--s-cread)"  data-tip="Odczyt cache&#10;74 496 USD  ·  63,8%"></rect>
+        <rect class="mark" tabindex="0" x="90.769%" y="0" width="9.231%"  height="26" rx="4" fill="var(--s-output)" data-tip="Output&#10;10 770 USD  ·  9,2%"></rect>
+        <rect x="90.769%" y="0" width="8" height="26" fill="var(--s-output)" pointer-events="none"></rect>
+        <rect x="4.588%"  y="0" width="2" height="26" fill="var(--panel)" transform="translate(-1,0)" pointer-events="none"></rect>
+        <rect x="26.921%" y="0" width="2" height="26" fill="var(--panel)" transform="translate(-1,0)" pointer-events="none"></rect>
+        <rect x="90.769%" y="0" width="2" height="26" fill="var(--panel)" transform="translate(-1,0)" pointer-events="none"></rect>
+      </svg>
+
+      <ul class="legend">
+        <li><span class="sw" style="background:var(--s-input)"></span><span class="nm">Świeży input</span><span class="vl">5&nbsp;354 USD / 4,6%</span></li>
+        <li><span class="sw" style="background:var(--s-cwrite)"></span><span class="nm">Zapis cache</span><span class="vl">26&nbsp;057 USD / 22,3%</span></li>
+        <li><span class="sw" style="background:var(--s-cread)"></span><span class="nm">Odczyt cache</span><span class="vl">74&nbsp;496 USD / 63,8%</span></li>
+        <li><span class="sw" style="background:var(--s-output)"></span><span class="nm">Output</span><span class="vl">10&nbsp;770 USD / 9,2%</span></li>
+      </ul>
+    </div>
+
+    <p class="note"><b>Jak mierzone:</b> kolejność segmentów to droga tokena - wjeżdża jako świeży input, zostaje zapisany do cache, jest odczytywany przy każdym kolejnym wywołaniu, na końcu wychodzi jako tekst. 933&nbsp;529 wywołań API wycenionych po cenniku modelu z prices.csv; 2,9% wywołań nie miało ceny i zostało pominięte.</p>
+  </header>
+
+  <!-- ================= 02 KAWA ================= -->
+  <section class="item">
+    <div class="item-head">
+      <span class="item-no">02</span>
+      <h2 class="item-title">Kawa</h2>
+      <span class="item-amount">9&nbsp;223 USD</span>
+      <p class="claim">Cache wygasa szybciej niż przerwa na kawę: po odstępie dłuższym niż pięć minut agent w co trzynastym przypadku płaci za wpisanie całego kontekstu od nowa, a po godzinie - w ponad czterech przypadkach na pięć.</p>
+    </div>
+
+    <div class="figure">
+      <div class="rows">
+        <div class="row">
+          <div class="rl">do 1 minuty<small>582 011 wywołań</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="18" role="img" aria-label="Odsetek wygasłego cache przy odstępie do 1 minuty: 0,6 procent">
+              <rect class="mark" tabindex="0" x="0" y="0" width="0.709%" height="18" rx="4" fill="var(--ord-1)" data-tip="do 1 min&#10;wygasły cache: 0,6% wywołań&#10;koszt przepisania: 2 977 USD"></rect>
+              <rect x="0" y="0" width="8" height="18" fill="var(--ord-1)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">0,6%<small>2 977 USD</small></div>
+        </div>
+        <div class="row">
+          <div class="rl">1 do 5 minut<small>59 077 wywołań</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="18" role="img" aria-label="Odsetek wygasłego cache przy odstępie 1 do 5 minut: 2,4 procent">
+              <rect class="mark" tabindex="0" x="0" y="0" width="2.879%" height="18" rx="4" fill="var(--ord-2)" data-tip="1-5 min&#10;wygasły cache: 2,4% wywołań&#10;koszt przepisania: 2 007 USD"></rect>
+              <rect x="0" y="0" width="8" height="18" fill="var(--ord-2)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">2,4%<small>2 007 USD</small></div>
+        </div>
+        <div class="row">
+          <div class="rl">5 do 60 minut<small>20 781 wywołań</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="18" role="img" aria-label="Odsetek wygasłego cache przy odstępie 5 do 60 minut: 7,8 procent">
+              <rect class="mark" tabindex="0" x="0" y="0" width="9.277%" height="18" rx="4" fill="var(--ord-4)" data-tip="5-60 min&#10;wygasły cache: 7,8% wywołań&#10;koszt przepisania: 2 371 USD"></rect>
+              <rect x="0" y="0" width="8" height="18" fill="var(--ord-4)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">7,8%<small>2 371 USD</small></div>
+        </div>
+        <div class="row">
+          <div class="rl">powyżej 60 minut<small>3 629 wywołań</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="18" role="img" aria-label="Odsetek wygasłego cache przy odstępie powyżej 60 minut: 83,6 procent">
+              <rect class="mark" tabindex="0" x="0" y="0" width="100%" height="18" rx="4" fill="var(--ord-6)" data-tip="powyżej 60 min&#10;wygasły cache: 83,6% wywołań&#10;mediana przerwy: 207 min&#10;koszt przepisania: 6 852 USD"></rect>
+              <rect x="0" y="0" width="8" height="18" fill="var(--ord-6)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">83,6%<small>6 852 USD</small></div>
+        </div>
+      </div>
+      <div class="axis"><span>0%</span><span>udział wywołań z wygasłym cache</span><span>83,6%</span></div>
+    </div>
+
+    <p class="note"><b>Jak mierzone:</b> wygasły cache to wywołanie, które zapisało do cache prawie cały swój kontekst zamiast go odczytać; wywołania pogrupowane po odstępie od poprzedniego w tej samej sesji. Suma dla odstępów powyżej 5 minut: <b>9 223 USD</b>, czyli 7,9% całego rachunku.</p>
+  </section>
+
+  <!-- ================= 03 CZYNSZ ================= -->
+  <section class="item">
+    <div class="item-head">
+      <span class="item-no">03</span>
+      <h2 class="item-title">Czynsz za kontekst</h2>
+      <span class="item-amount">30&nbsp;746 USD</span>
+      <p class="claim">Połowa tokenów odczytywanych z cache w Claude Code to wyniki narzędzi, które raz wpadły do kontekstu i są opłacane przy każdym następnym wywołaniu, a sędzia uznał, że w 96,7% przypadków wystarczył fragment wyniku albo nic.</p>
+    </div>
+
+    <div class="figure">
+      <div class="rows">
+        <div class="row">
+          <div class="rl">wyniki narzędzi<small>udział w cache-read</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="18" role="img" aria-label="Wyniki narzędzi to 51,3 procent tokenów cache-read w Claude Code">
+              <rect class="mark" tabindex="0" x="0" y="0" width="51.3%" height="18" rx="4" fill="var(--accent)" data-tip="Wyniki narzędzi w cache-read&#10;51,3% tokenów Claude Code&#10;czynsz: 30 746 USD"></rect>
+              <rect x="0" y="0" width="8" height="18" fill="var(--accent)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">51,3%</div>
+        </div>
+        <div class="row">
+          <div class="rl">wyniki ponad 10&nbsp;000 znaków<small>udział w liczbie wyników</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="18" role="img" aria-label="Wyniki powyżej 10 000 znaków to 5,3 procent wszystkich wyników">
+              <rect class="mark" tabindex="0" x="0" y="0" width="5.31%" height="18" rx="4" fill="var(--accent)" data-tip="Wyniki dłuższe niż 10 000 znaków&#10;5,3% wszystkich wyników narzędzi"></rect>
+              <rect x="0" y="0" width="8" height="18" fill="var(--accent)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">5,3%</div>
+        </div>
+        <div class="row">
+          <div class="rl">te same wyniki<small>udział w czynszu</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="18" role="img" aria-label="Te same wyniki odpowiadają za 61,3 procent czynszu">
+              <rect class="mark" tabindex="0" x="0" y="0" width="61.3%" height="18" rx="4" fill="var(--accent)" data-tip="Czynsz z wyników ponad 10 000 znaków&#10;61,3% całego czynszu"></rect>
+              <rect x="0" y="0" width="8" height="18" fill="var(--accent)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">61,3%</div>
+        </div>
+      </div>
+      <div class="axis"><span>0%</span><span>skala wspólna dla trzech wierszy</span><span>100%</span></div>
+    </div>
+
+    <div class="figure">
+      <div class="doc-kind">Ile z wyniku było naprawdę potrzebne (600 ocen)</div>
+      <svg class="bar-svg" width="100%" height="22" role="img" aria-label="Potrzebna część wyniku: nic 32,5 procent, drobny fragment 64,2 procent, większość 3,2 procent, całość 0,2 procent">
+        <rect class="mark" tabindex="0" x="0"     y="0" width="32.5%" height="22" fill="var(--ord-1)" data-tip="Nic z wyniku&#10;195 z 600 ocen  ·  32,5%"></rect>
+        <rect class="mark" tabindex="0" x="32.5%" y="0" width="64.2%" height="22" fill="var(--ord-3)" data-tip="Drobny fragment&#10;385 z 600 ocen  ·  64,2%"></rect>
+        <rect class="mark" tabindex="0" x="96.7%" y="0" width="3.2%"  height="22" fill="var(--ord-5)" data-tip="Większość wyniku&#10;19 z 600 ocen  ·  3,2%"></rect>
+        <rect class="mark" tabindex="0" x="99.9%" y="0" width="0.1667%" height="22" rx="4" fill="var(--ord-6)" data-tip="Cały wynik&#10;1 z 600 ocen  ·  0,2%"></rect>
+        <rect x="32.5%" y="0" width="2" height="22" fill="var(--panel)" transform="translate(-1,0)" pointer-events="none"></rect>
+        <rect x="96.7%" y="0" width="2" height="22" fill="var(--panel)" transform="translate(-1,0)" pointer-events="none"></rect>
+      </svg>
+      <ul class="legend">
+        <li><span class="sw" style="background:var(--ord-1)"></span><span class="nm">nic</span><span class="vl">32,5%</span></li>
+        <li><span class="sw" style="background:var(--ord-3)"></span><span class="nm">drobny fragment</span><span class="vl">64,2%</span></li>
+        <li><span class="sw" style="background:var(--ord-5)"></span><span class="nm">większość</span><span class="vl">3,2%</span></li>
+        <li><span class="sw" style="background:var(--ord-6)"></span><span class="nm">całość</span><span class="vl">0,2%</span></li>
+      </ul>
+    </div>
+
+    <p class="note"><b>Jak mierzone:</b> czynsz to tokeny wyniku pomnożone przez liczbę późniejszych wywołań w tej samej sesji, wycenione po stawce cache-read; ocena potrzebnej części wyniku na 600 losowych przypadkach przez sędziego DeepSeek V4-Pro.</p>
+  </section>
+
+  <!-- ================= 04 PRZEPISYWANIE ================= -->
+  <section class="item">
+    <div class="item-head">
+      <span class="item-no">04</span>
+      <h2 class="item-title">Przepisywanie plików</h2>
+      <span class="item-amount">79,8% / 336</span>
+      <p class="claim">Kiedy agent zapisuje cały plik zamiast łatki, prawie nigdy nie jest to potrzebne, a jedynym wyjątkiem jest Codex, który pisze diffy przez apply_patch.</p>
+    </div>
+
+    <div class="figure">
+      <div class="rows">
+        <div class="row">
+          <div class="rl">Cursor<small>43 przypadki</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="20" role="img" aria-label="Cursor: 95,3 procent pełnych przepisań niepotrzebnych">
+              <rect class="mark" tabindex="0" x="0" y="0" width="95.3%" height="20" rx="4" fill="var(--accent)" data-tip="Cursor&#10;41 z 43 pełnych przepisań zbędne&#10;95,3%"></rect>
+              <rect x="0" y="0" width="8" height="20" fill="var(--accent)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">95,3%</div>
+        </div>
+        <div class="row">
+          <div class="rl">OpenCode<small>112 przypadków</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="20" role="img" aria-label="OpenCode: 86,6 procent pełnych przepisań niepotrzebnych">
+              <rect class="mark" tabindex="0" x="0" y="0" width="86.6%" height="20" rx="4" fill="var(--accent)" data-tip="OpenCode&#10;97 z 112 pełnych przepisań zbędne&#10;86,6%"></rect>
+              <rect x="0" y="0" width="8" height="20" fill="var(--accent)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">86,6%</div>
+        </div>
+        <div class="row">
+          <div class="rl">Claude Code<small>120 przypadków</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="20" role="img" aria-label="Claude Code: 85,8 procent pełnych przepisań niepotrzebnych">
+              <rect class="mark" tabindex="0" x="0" y="0" width="85.8%" height="20" rx="4" fill="var(--accent)" data-tip="Claude Code&#10;103 z 120 pełnych przepisań zbędne&#10;85,8%"></rect>
+              <rect x="0" y="0" width="8" height="20" fill="var(--accent)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">85,8%</div>
+        </div>
+        <div class="row">
+          <div class="rl">Codex<small>61 przypadków</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="20" role="img" aria-label="Codex: 44,3 procent pełnych przepisań niepotrzebnych">
+              <rect class="mark" tabindex="0" x="0" y="0" width="44.3%" height="20" rx="4" fill="var(--accent)" data-tip="Codex&#10;27 z 61 pełnych przepisań zbędne&#10;44,3%  ·  pisze łatki apply_patch"></rect>
+              <rect x="0" y="0" width="8" height="20" fill="var(--accent)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">44,3%</div>
+        </div>
+      </div>
+      <div class="axis"><span>0%</span><span>udział pełnych przepisań uznanych za zbędne</span><span>100%</span></div>
+    </div>
+
+    <p class="note"><b>Jak mierzone:</b> 336 losowo wybranych zapisów całego pliku, który był już wcześniej czytany w tej samej sesji; sędzia dostał wersję przed i po i oceniał, czy pełne przepisanie było konieczne. Łącznie 79,8% uznane za zbędne.</p>
+  </section>
+
+  <!-- ================= 05 HARNESS ================= -->
+  <section class="item">
+    <div class="item-head">
+      <span class="item-no">05</span>
+      <h2 class="item-title">Harness pisze prompt</h2>
+      <span class="item-amount">376,8 mln znaków</span>
+      <p class="claim">Trzy czwarte znaków po stronie promptu wpisuje nie człowiek, tylko harness: przypomnienia systemowe, pliki kontekstu i wyniki hooków doklejane do każdej tury.</p>
+    </div>
+
+    <div class="figure">
+      <svg class="bar-svg" width="100%" height="26" role="img" aria-label="Strona promptu: harness 74,9 procent, człowiek 25,1 procent">
+        <rect class="mark" tabindex="0" x="0"      y="0" width="74.903%" height="26" fill="var(--accent)" data-tip="Harness&#10;376 770 182 znaki  ·  74,9%&#10;około 94,2 mln tokenów"></rect>
+        <rect class="mark" tabindex="0" x="74.903%" y="0" width="25.097%" height="26" rx="4" fill="var(--human)" data-tip="Człowiek&#10;126 243 011 znaków  ·  25,1%"></rect>
+        <rect x="74.903%" y="0" width="8" height="26" fill="var(--human)" pointer-events="none"></rect>
+        <rect x="74.903%" y="0" width="2" height="26" fill="var(--panel)" transform="translate(-1,0)" pointer-events="none"></rect>
+      </svg>
+      <ul class="legend">
+        <li><span class="sw" style="background:var(--accent)"></span><span class="nm">Doklejki harnessu</span><span class="vl">376 770 182 znaki / 74,9%</span></li>
+        <li><span class="sw" style="background:var(--human)"></span><span class="nm">Tekst wpisany ręcznie</span><span class="vl">126 243 011 znaków / 25,1%</span></li>
+      </ul>
+    </div>
+
+    <p class="note"><b>Jak mierzone:</b> 235 503 zdarzenia z doklejkami; liczone znaki bloków dostawionych przez harness po stronie użytkownika kontra znaki faktycznie napisane przez człowieka w tych samych sesjach.</p>
+  </section>
+
+  <!-- ================= 06 BASH ================= -->
+  <section class="item">
+    <div class="item-head">
+      <span class="item-no">06</span>
+      <h2 class="item-title">Co jest w wynikach Basha</h2>
+      <span class="item-amount">1&nbsp;050 USD</span>
+      <p class="claim">Dziewięć na dziesięć znaków wychodzących z powłoki siedzi w wynikach, które gzip ściśnie co najmniej dwukrotnie: to nie są dane, to są powtórzenia.</p>
+    </div>
+
+    <div class="figure">
+      <svg class="bar-svg" width="100%" height="132" role="img" aria-label="Udział znaków wyników Basha według współczynnika kompresji gzip: poniżej 2 to 7 procent, 2 do 3 to 24,1 procent, 3 do 5 to 35,4 procent, 5 do 10 to 25,8 procent, 10 do 20 to 6,2 procent, 20 i więcej to 1,4 procent">
+        <rect x="0" y="120" width="100%" height="1" fill="var(--rule)" pointer-events="none"></rect>
+
+        <rect class="mark" tabindex="0" x="8.333%"  y="98"  width="28" height="22"  rx="4" fill="var(--ord-1)" transform="translate(-14,0)" data-tip="gzip poniżej 2&#10;7,0% znaków wyników&#10;1 745 z 3 000 wywołań"></rect>
+        <rect x="8.333%"  y="112" width="28" height="8" fill="var(--ord-1)" transform="translate(-14,0)" pointer-events="none"></rect>
+
+        <rect class="mark" tabindex="0" x="25%"     y="45"  width="28" height="75"  rx="4" fill="var(--ord-2)" transform="translate(-14,0)" data-tip="gzip 2 do 3&#10;24,1% znaków wyników&#10;673 z 3 000 wywołań"></rect>
+        <rect x="25%"     y="112" width="28" height="8" fill="var(--ord-2)" transform="translate(-14,0)" pointer-events="none"></rect>
+
+        <rect class="mark" tabindex="0" x="41.667%" y="10"  width="28" height="110" rx="4" fill="var(--ord-3)" transform="translate(-14,0)" data-tip="gzip 3 do 5&#10;35,4% znaków wyników&#10;428 z 3 000 wywołań"></rect>
+        <rect x="41.667%" y="112" width="28" height="8" fill="var(--ord-3)" transform="translate(-14,0)" pointer-events="none"></rect>
+
+        <rect class="mark" tabindex="0" x="58.333%" y="40"  width="28" height="80"  rx="4" fill="var(--ord-4)" transform="translate(-14,0)" data-tip="gzip 5 do 10&#10;25,8% znaków wyników&#10;135 z 3 000 wywołań"></rect>
+        <rect x="58.333%" y="112" width="28" height="8" fill="var(--ord-4)" transform="translate(-14,0)" pointer-events="none"></rect>
+
+        <rect class="mark" tabindex="0" x="75%"     y="101" width="28" height="19"  rx="4" fill="var(--ord-5)" transform="translate(-14,0)" data-tip="gzip 10 do 20&#10;6,2% znaków wyników&#10;15 z 3 000 wywołań"></rect>
+        <rect x="75%"     y="112" width="28" height="8" fill="var(--ord-5)" transform="translate(-14,0)" pointer-events="none"></rect>
+
+        <rect class="mark" tabindex="0" x="91.667%" y="116" width="28" height="4"   rx="2" fill="var(--ord-6)" transform="translate(-14,0)" data-tip="gzip 20 i więcej&#10;1,4% znaków wyników&#10;4 z 3 000 wywołań"></rect>
+      </svg>
+
+      <div class="cols">
+        <div><div class="cv">7,0%</div><div class="cl">&lt;2</div></div>
+        <div><div class="cv">24,1%</div><div class="cl">2-3</div></div>
+        <div><div class="cv">35,4%</div><div class="cl">3-5</div></div>
+        <div><div class="cv">25,8%</div><div class="cl">5-10</div></div>
+        <div><div class="cv">6,2%</div><div class="cl">10-20</div></div>
+        <div><div class="cv">1,4%</div><div class="cl">20+</div></div>
+      </div>
+      <div class="axis"><span>współczynnik kompresji gzip</span><span>udział znaków wyników Basha</span></div>
+    </div>
+
+    <div class="figure">
+      <div class="doc-kind">Obrazki base64 w wynikach Read</div>
+      <div class="rows">
+        <div class="row">
+          <div class="rl">udział wywołań Read</div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="18" role="img" aria-label="Obrazki base64 to 1,4 procent wywołań Read">
+              <rect class="mark" tabindex="0" x="0" y="0" width="1.4%" height="18" rx="4" fill="var(--accent)" data-tip="Obrazki base64&#10;41 z 3 000 próbowanych Readów  ·  1,4%"></rect>
+              <rect x="0" y="0" width="8" height="18" fill="var(--accent)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">1,4%</div>
+        </div>
+        <div class="row">
+          <div class="rl">udział znaków Read</div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="18" role="img" aria-label="Obrazki base64 to 33 procent znaków w wynikach Read">
+              <rect class="mark" tabindex="0" x="0" y="0" width="33.3%" height="18" rx="4" fill="var(--accent)" data-tip="Obrazki base64&#10;33% wszystkich znaków w wynikach Read&#10;około 65 mln tokenów, 311 USD"></rect>
+              <rect x="0" y="0" width="8" height="18" fill="var(--accent)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">33%</div>
+        </div>
+      </div>
+      <div class="axis"><span>0%</span><span>jedna Read na siedemdziesiąt zjada trzecią część znaków</span><span>100%</span></div>
+    </div>
+
+    <p class="note"><b>Jak mierzone:</b> 3 000 losowych wywołań Basha, współczynnik kompresji liczony jako długość w bajtach podzielona przez długość po zlib; czysta redundancja wyceniona na 1 050 USD po stawce input. Obrazki rozpoznane po nagłówku media_type w wyniku Read: około 65 mln tokenów i 311 USD.</p>
+  </section>
+
+  <!-- ================= 07 PUSHBACK ================= -->
+  <section class="item">
+    <div class="item-head">
+      <span class="item-no">07</span>
+      <h2 class="item-title">Koszt pushbacku</h2>
+      <span class="item-amount">15&nbsp;750 USD</span>
+      <p class="claim">Poprawki i zgłoszenia błędów uruchamiają 13,8% całego rachunku: tyle kosztuje mówienie agentowi, że zrobił to źle.</p>
+    </div>
+
+    <div class="figure">
+      <div class="rows">
+        <div class="row">
+          <div class="rl">kontynuacja<small>follow_up</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="18" role="img" aria-label="Kontynuacja: 34,1 procent wydatku">
+              <rect class="mark" tabindex="0" x="0" y="0" width="34.1%" height="18" rx="4" fill="var(--accent)" data-tip="follow_up&#10;38 898 USD  ·  34,1%&#10;27 009 promptów"></rect>
+              <rect x="0" y="0" width="8" height="18" fill="var(--accent)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">34,1%<small>38 898 USD</small></div>
+        </div>
+        <div class="row">
+          <div class="rl">zgoda<small>approval</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="18" role="img" aria-label="Zgoda: 18,2 procent wydatku">
+              <rect class="mark" tabindex="0" x="0" y="0" width="18.2%" height="18" rx="4" fill="var(--accent)" data-tip="approval&#10;20 801 USD  ·  18,2%&#10;11 610 promptów"></rect>
+              <rect x="0" y="0" width="8" height="18" fill="var(--accent)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">18,2%<small>20 801 USD</small></div>
+        </div>
+        <div class="row">
+          <div class="rl">meta i inne<small>meta_other</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="18" role="img" aria-label="Meta i inne: 13,4 procent wydatku">
+              <rect class="mark" tabindex="0" x="0" y="0" width="13.4%" height="18" rx="4" fill="var(--accent)" data-tip="meta_other&#10;15 320 USD  ·  13,4%&#10;14 063 prompty"></rect>
+              <rect x="0" y="0" width="8" height="18" fill="var(--accent)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">13,4%<small>15 320 USD</small></div>
+        </div>
+        <div class="row">
+          <div class="rl">nowe zadanie<small>new_task</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="18" role="img" aria-label="Nowe zadanie: 12,1 procent wydatku">
+              <rect class="mark" tabindex="0" x="0" y="0" width="12.1%" height="18" rx="4" fill="var(--accent)" data-tip="new_task&#10;13 815 USD  ·  12,1%&#10;8 881 promptów"></rect>
+              <rect x="0" y="0" width="8" height="18" fill="var(--accent)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">12,1%<small>13 815 USD</small></div>
+        </div>
+        <div class="row">
+          <div class="rl">zgłoszenie błędu<small>failure_report</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="18" role="img" aria-label="Zgłoszenie błędu: 8,1 procent wydatku, kategoria pushback">
+              <rect class="mark" tabindex="0" x="0" y="0" width="8.1%" height="18" rx="4" fill="var(--human)" data-tip="failure_report  (pushback)&#10;9 245 USD  ·  8,1%&#10;7 054 prompty"></rect>
+              <rect x="0" y="0" width="8" height="18" fill="var(--human)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">8,1%<small>9 245 USD</small></div>
+        </div>
+        <div class="row">
+          <div class="rl">pytanie<small>question</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="18" role="img" aria-label="Pytanie: 8,0 procent wydatku">
+              <rect class="mark" tabindex="0" x="0" y="0" width="8.0%" height="18" rx="4" fill="var(--accent)" data-tip="question&#10;9 104 USD  ·  8,0%&#10;12 772 prompty"></rect>
+              <rect x="0" y="0" width="8" height="18" fill="var(--accent)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">8,0%<small>9 104 USD</small></div>
+        </div>
+        <div class="row">
+          <div class="rl">poprawka<small>correction</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="18" role="img" aria-label="Poprawka: 5,7 procent wydatku, kategoria pushback">
+              <rect class="mark" tabindex="0" x="0" y="0" width="5.7%" height="18" rx="4" fill="var(--human)" data-tip="correction  (pushback)&#10;6 505 USD  ·  5,7%&#10;5 346 promptów"></rect>
+              <rect x="0" y="0" width="8" height="18" fill="var(--human)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">5,7%<small>6 505 USD</small></div>
+        </div>
+        <div class="row">
+          <div class="rl">przerwanie<small>interruption</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="18" role="img" aria-label="Przerwanie: 0,4 procent wydatku">
+              <rect class="mark" tabindex="0" x="0" y="0" width="0.4%" height="18" rx="4" fill="var(--accent)" data-tip="interruption&#10;414 USD  ·  0,4%&#10;1 152 prompty"></rect>
+              <rect x="0" y="0" width="8" height="18" fill="var(--accent)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">0,4%<small>414 USD</small></div>
+        </div>
+      </div>
+      <div class="axis"><span>0%</span><span>udział w całym wydatku na tokeny</span><span>34,1%</span></div>
+      <ul class="legend">
+        <li><span class="sw" style="background:var(--human)"></span><span class="nm">Pushback</span><span class="vl">poprawka + zgłoszenie błędu = 15 750 USD / 13,8%</span></li>
+        <li><span class="sw" style="background:var(--accent)"></span><span class="nm">Pozostałe etykiety</span><span class="vl">98 352 USD / 86,2%</span></li>
+      </ul>
+    </div>
+
+    <p class="note"><b>Jak mierzone:</b> 87 887 promptów oznaczonych przez model; do każdej etykiety doliczone wszystkie wywołania agenta aż do następnego promptu w tej samej sesji. Odsetek promptów z pushbackiem: OpenCode 16,0%, Claude Code 15,5%, Cursor 14,9%, Codex 12,4%.</p>
+  </section>
+
+  <!-- ================= 08 GORACE PLIKI ================= -->
+  <section class="item">
+    <div class="item-head">
+      <span class="item-no">08</span>
+      <h2 class="item-title">Gorące pliki</h2>
+      <span class="item-amount">28% regresów</span>
+      <p class="claim">Pliki edytowane najczęściej są węzłami architektury i to naturalne, ale co czwarta taka edycja naprawia regres, który agent sam wcześniej wprowadził.</p>
+    </div>
+
+    <div class="figure">
+      <div class="rows">
+        <div class="row">
+          <div class="rl">węzeł architektury<small>architecture_hub</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="20" role="img" aria-label="Węzeł architektury: 55 procent przypadków">
+              <rect class="mark" tabindex="0" x="0" y="0" width="55%" height="20" rx="4" fill="var(--accent)" data-tip="architecture_hub&#10;110 z 200 ocen  ·  55%"></rect>
+              <rect x="0" y="0" width="8" height="20" fill="var(--accent)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">55%</div>
+        </div>
+        <div class="row">
+          <div class="rl">regres agenta<small>agent_regression</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="20" role="img" aria-label="Regres agenta: 28 procent przypadków">
+              <rect class="mark" tabindex="0" x="0" y="0" width="28%" height="20" rx="4" fill="var(--human)" data-tip="agent_regression&#10;56 z 200 ocen  ·  28%&#10;95% CI: 22,2% do 34,6%"></rect>
+              <rect x="0" y="0" width="8" height="20" fill="var(--human)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">28%</div>
+        </div>
+        <div class="row">
+          <div class="rl">plik testowy<small>test_file</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="20" role="img" aria-label="Plik testowy: 9 procent przypadków">
+              <rect class="mark" tabindex="0" x="0" y="0" width="9%" height="20" rx="4" fill="var(--accent)" data-tip="test_file&#10;18 z 200 ocen  ·  9%"></rect>
+              <rect x="0" y="0" width="8" height="20" fill="var(--accent)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">9%</div>
+        </div>
+        <div class="row">
+          <div class="rl">iteracja użytkownika<small>user_iteration</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="20" role="img" aria-label="Iteracja użytkownika: 7 procent przypadków">
+              <rect class="mark" tabindex="0" x="0" y="0" width="7%" height="20" rx="4" fill="var(--accent)" data-tip="user_iteration&#10;14 z 200 ocen  ·  7%"></rect>
+              <rect x="0" y="0" width="8" height="20" fill="var(--accent)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">7%</div>
+        </div>
+        <div class="row">
+          <div class="rl">pozostałe<small>unclear, config_churn</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="20" role="img" aria-label="Pozostałe przyczyny: 1 procent przypadków">
+              <rect class="mark" tabindex="0" x="0" y="0" width="1%" height="20" rx="4" fill="var(--accent)" data-tip="unclear + config_churn&#10;2 z 200 ocen  ·  1%"></rect>
+              <rect x="0" y="0" width="8" height="20" fill="var(--accent)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">1%</div>
+        </div>
+      </div>
+      <div class="axis"><span>0%</span><span>udział ocenionych edycji</span><span>55%</span></div>
+      <ul class="legend">
+        <li><span class="sw" style="background:var(--human)"></span><span class="nm">Praca do poprawy</span><span class="vl">regres agenta, 28%</span></li>
+        <li><span class="sw" style="background:var(--accent)"></span><span class="nm">Natura kodu i procesu</span><span class="vl">pozostałe przyczyny, 72%</span></li>
+      </ul>
+    </div>
+
+    <p class="note"><b>Jak mierzone:</b> 40 najczęściej edytowanych plików, po pięć przypadków na plik, łącznie 200 ocen; sędzia klasyfikował przyczynę kolejnej edycji tego samego pliku w tej samej sesji.</p>
+  </section>
+
+  <!-- ================= 09 CZAS ================= -->
+  <section class="item">
+    <div class="item-head">
+      <span class="item-no">09</span>
+      <h2 class="item-title">Czas ludzki kontra tokeny</h2>
+      <span class="item-amount">981&nbsp;481 USD</span>
+      <p class="claim">Tokeny są najtańszą pozycją w tym rachunku: jeśli człowiek faktycznie siedzi i patrzy, jak agent pracuje, jego czas kosztuje 8,6 raza więcej niż wszystkie tokeny zużyte w tych samych turach.</p>
+    </div>
+
+    <div class="figure">
+      <div class="rows">
+        <div class="row">
+          <div class="rl">czas człowieka<small>16 358 godzin po 60 USD</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="24" role="img" aria-label="Czas człowieka: 981 481 USD">
+              <rect class="mark" tabindex="0" x="0" y="0" width="100%" height="24" rx="4" fill="var(--human)" data-tip="Czas człowieka czekającego przy agencie&#10;16 358 godzin  ·  981 481 USD"></rect>
+              <rect x="0" y="0" width="8" height="24" fill="var(--human)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">981 481<small>USD</small></div>
+        </div>
+        <div class="row">
+          <div class="rl">tokeny w tych turach<small>rachunek za model</small></div>
+          <div class="rbar">
+            <svg class="bar-svg" width="100%" height="24" role="img" aria-label="Tokeny w tych samych turach: 113 945 USD">
+              <rect class="mark" tabindex="0" x="0" y="0" width="11.61%" height="24" rx="4" fill="var(--accent)" data-tip="Tokeny zużyte w tych samych turach&#10;113 945 USD  ·  7,0 USD na godzinę pracy agenta"></rect>
+              <rect x="0" y="0" width="8" height="24" fill="var(--accent)" pointer-events="none"></rect>
+            </svg>
+          </div>
+          <div class="rv">113 945<small>USD</small></div>
+        </div>
+      </div>
+      <div class="axis"><span>0 USD</span><span>wspólna skala, stosunek 8,6 do 1</span><span>981 481 USD</span></div>
+      <ul class="legend">
+        <li><span class="sw" style="background:var(--human)"></span><span class="nm">Człowiek</span><span class="vl">981 481 USD</span></li>
+        <li><span class="sw" style="background:var(--accent)"></span><span class="nm">Maszyna</span><span class="vl">113 945 USD</span></li>
+      </ul>
+    </div>
+
+    <p class="note"><b>Jak mierzone:</b> czas pracy agenta liczony z odstępów między wywołaniami w turze, mediana 70 sekund na turę; stawka człowieka przyjęta arbitralnie na 60 USD za godzinę. Na każdą godzinę pracy agenta przypada 7,0 USD tokenów. Samo pisanie i myślenie człowieka to dodatkowe 3 337 godzin.</p>
+  </section>
+
+  <!-- ================= 10 DROBNE PODATKI ================= -->
+  <section class="item">
+    <div class="item-head">
+      <span class="item-no">10</span>
+      <h2 class="item-title">Drobne podatki</h2>
+      <span class="item-amount">4 pozycje</span>
+      <p class="claim">Cztery opłaty, z których każda z osobna jest nieszkodliwa, a razem są stałym podatkiem od formatu.</p>
+    </div>
+
+    <div class="tiles">
+      <div class="tile">
+        <div class="tl">Numery linii doklejane do wyników Read</div>
+        <div class="tv" style="color:var(--accent)">9,3%</div>
+        <svg class="bar-svg" width="100%" height="14" role="img" aria-label="9,3 procent znaków wyników Read to prefiksy numerów linii">
+          <rect class="mark" tabindex="0" x="0" y="4" width="9.3%" height="6" rx="3" fill="var(--accent)" data-tip="Prefiksy numerów linii&#10;9,3% znaków w wynikach Read&#10;85 mln znaków, 89 USD"></rect>
+        </svg>
+        <div class="tn">znaków w wynikach Read, 89 USD</div>
+      </div>
+
+      <div class="tile">
+        <div class="tl">Składnia JSON w wywołaniu edycji pliku</div>
+        <div class="tv" style="color:var(--accent)">10,2%</div>
+        <svg class="bar-svg" width="100%" height="14" role="img" aria-label="Claude Code Edit 10,2 procent, Codex apply_patch 4,8 procent">
+          <rect class="mark" tabindex="0" x="0" y="0" width="10.2%" height="6" rx="3" fill="var(--accent)" data-tip="Claude Code, narzędzie Edit&#10;10,2% wejścia to składnia JSON"></rect>
+          <rect class="mark" tabindex="0" x="0" y="8" width="4.8%" height="6" rx="3" fill="var(--accent)" data-tip="Codex, apply_patch&#10;4,8% wejścia to składnia JSON"></rect>
+        </svg>
+        <div class="tn">Edit w Claude Code kontra 4,8% w apply_patch</div>
+      </div>
+
+      <div class="tile">
+        <div class="tl">Tekst finalnej odpowiedzi, którego nikt nie zdążył przeczytać</div>
+        <div class="tv" style="color:var(--human)">21,3%</div>
+        <svg class="bar-svg" width="100%" height="14" role="img" aria-label="21,3 procent tokenów finalnej odpowiedzi nieprzeczytane">
+          <rect class="mark" tabindex="0" x="0" y="4" width="21.3%" height="6" rx="3" fill="var(--human)" data-tip="Nieprzeczytane odpowiedzi&#10;21,3% tokenów tekstu końcowego&#10;8 915 z 66 528 odpowiedzi"></rect>
+        </svg>
+        <div class="tn">8 915 z 66 528 odpowiedzi</div>
+      </div>
+
+      <div class="tile">
+        <div class="tl">Punktory w finalnych odpowiedziach Claude Code</div>
+        <div class="tv" style="color:var(--human)">34,6%</div>
+        <svg class="bar-svg" width="100%" height="14" role="img" aria-label="34,6 procent znaków finalnych odpowiedzi to linie z punktorami">
+          <rect class="mark" tabindex="0" x="0" y="4" width="34.6%" height="6" rx="3" fill="var(--human)" data-tip="Linie z punktorami&#10;34,6% znaków finalnych odpowiedzi&#10;około 126 USD"></rect>
+        </svg>
+        <div class="tn">znaków tekstu końcowego, około 126 USD</div>
+      </div>
+    </div>
+
+    <p class="note"><b>Jak mierzone:</b> cztery sondy po 3 000 losowych wywołań każda, udziały ważone liczbą znaków i przemnożone przez dokładne sumy z ledgera. Czas czytania w pozycji trzeciej przyjęty jako 200 słów na minutę i porównany z odstępem do następnego promptu.</p>
+  </section>
+
+  <!-- ================= 11 ZASTRZEZENIA ================= -->
+  <section class="item">
+    <div class="item-head">
+      <span class="item-no">11</span>
+      <h2 class="item-title">Zastrzeżenia</h2>
+      <span class="item-amount">czytaj przed użyciem</span>
+      <p class="claim">Każda liczba wyżej ma granice, w których obowiązuje.</p>
+    </div>
+
+    <ul class="caveats">
+      <li><span class="dot"></span><span><b>Cursor nie raportuje tokenów ani znaczników czasu.</b> Jego 86 sesji i 8 910 wywołań jest w zbiorze, ale w rachunku mają zero. Wszystkie kwoty są zaniżone o nieznaną wartość.</span></li>
+      <li><span class="dot"></span><span><b>Codex nigdy nie ustawia is_error.</b> Nieudane wywołania narzędzi wyglądają u niego jak udane, więc każde porównanie błędów między harnessami jest po jego stronie zaniżone.</span></li>
+      <li><span class="dot"></span><span><b>731 sesji nie ma przypisania</b> do modelu albo do repozytorium i wypada z podziałów. 2,9% wywołań nie ma ceny, bo model nie występuje w cenniku.</span></li>
+      <li><span class="dot"></span><span><b>Sędzia to model, nie człowiek.</b> Wszystkie oceny jakościowe (czy wynik był potrzebny, czy przepisanie było konieczne, przyczyna gorącego pliku) pochodzą z DeepSeek V4-Pro na próbach po 200 do 600 przypadków; podane odsetki noszą 95-procentowe przedziały Wilsona, na przykład regres agenta 28% to przedział od 22,2% do 34,6%.</span></li>
+      <li><span class="dot"></span><span><b>Stosunek 8,6 do 1 zakłada, że człowiek patrzy.</b> Jeśli w czasie pracy agenta robi cokolwiek innego, ten koszt znika, a razem z nim cały argument z pozycji dziewiątej.</span></li>
+      <li><span class="dot"></span><span><b>Sondy na 3 000 wywołań są rzędem wielkości, nie pomiarem.</b> Rozmiary wyników mają ciężki ogon, więc udziały oparte na kilkudziesięciu trafieniach (obrazki base64, wyniki Basha o kompresji ponad 10) mogą się zmienić o połowę przy innym losowaniu.</span></li>
+    </ul>
+  </section>
+
+  <div class="foot">
+    <span>zbiór: SWE-chat enhanced 2026-07-05 &nbsp;·&nbsp; 9 770 sesji &nbsp;·&nbsp; 17,8 GB</span>
+    <span>analiza: 2026-09-11</span>
+  </div>
+</div>
+
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var tip = document.getElementById('tip');
+  var current = null;
+
+  function show(el, x, y){
+    var t = el.getAttribute('data-tip');
+    if(!t) return;
+    tip.textContent = t;
+    tip.classList.add('on');
+    var pad = 12;
+    var w = tip.offsetWidth;
+    var px = Math.min(Math.max(x, w/2 + pad), window.innerWidth - w/2 - pad);
+    tip.style.left = px + 'px';
+    tip.style.top = Math.max(y - 6, 44) + 'px';
+    current = el;
+  }
+  function hide(){
+    tip.classList.remove('on');
+    current = null;
+  }
+
+  document.addEventListener('pointermove', function(e){
+    var el = e.target.closest ? e.target.closest('[data-tip]') : null;
+    if(el){ show(el, e.clientX, e.clientY); }
+    else if(current){ hide(); }
+  }, {passive:true});
+
+  document.addEventListener('pointerleave', hide);
+  document.addEventListener('scroll', function(){ if(current) hide(); }, {passive:true});
+
+  document.addEventListener('focusin', function(e){
+    var el = e.target.closest ? e.target.closest('[data-tip]') : null;
+    if(!el){ hide(); return; }
+    var r = el.getBoundingClientRect();
+    show(el, r.left + r.width/2, r.top);
+  });
+  document.addEventListener('focusout', hide);
+})();
+</script>

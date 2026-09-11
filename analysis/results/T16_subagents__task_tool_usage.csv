@@ -1,0 +1,5 @@
+agent,task_calls,sessions,result_chars,median_result_chars,usd_of_the_task_prompts
+claude_code,17833,3542,91255520,3136.5,265.92636749999997
+codex,2235,125,1810622,76.0,8.753093000000003
+opencode,429,56,1375294,1241.0,4.123623999999997
+cursor,125,18,0,,

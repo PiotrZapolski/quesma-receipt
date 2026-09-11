@@ -1,0 +1,5 @@
+agent,sessions,sessions_with_a_boundary,pct_sessions_compacted,median_boundaries_when_present,max_boundaries,usd_in_compacted_sessions
+claude_code,7230,746,10.318118948824344,1.0,96,36593.383800199976
+codex,1167,302,25.878320479862897,2.0,103,16718.201627399994
+opencode,783,0,0.0,,,
+cursor,86,0,0.0,,,

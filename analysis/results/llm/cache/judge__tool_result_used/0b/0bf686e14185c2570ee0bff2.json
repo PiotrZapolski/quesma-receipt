@@ -1,0 +1,1 @@
+{"id": "0bf686e14185c2570ee0bff2", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2776, "output_tokens": 52}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later record 61 reads the spec template path found in this result; only the path line was needed."}, "ts": 1789153577.767624}

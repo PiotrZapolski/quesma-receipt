@@ -1,0 +1,5 @@
+agent,injected_chars,attachment_chars,human_chars,pct_injected_of_prompt_side,pct_attachments_of_prompt_side
+claude_code,4283189782,376770182,69592473,98.40119562792144,84.4089839908314
+codex,992233306,,48931372,95.30032347101964,
+opencode,5996978,,7084458,45.84342269457267,
+cursor,6753,,634708,1.0527530122641906,

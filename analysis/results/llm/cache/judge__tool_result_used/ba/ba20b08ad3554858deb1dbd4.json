@@ -1,0 +1,1 @@
+{"id": "ba20b08ad3554858deb1dbd4", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2434, "output_tokens": 54}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later review used PR metadata, body, and changed filenames; the 90KB patch was mostly unused."}, "ts": 1789153571.856311}

@@ -1,0 +1,1 @@
+{"id": "6acd57fc9362315ea982da88", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2555, "output_tokens": 42}, "result": {"cause": "agent_regression", "reason": "Agent changed function signature to require redact.RedactedBytes, then fixed its own broken references and callers in subsequent edits."}, "ts": 1789153623.0592299}

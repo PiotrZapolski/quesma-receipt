@@ -1,0 +1,5 @@
+agent,sessions,median_attachment_chars_per_session,p90_attachment_chars_per_session,max_attachment_chars
+claude_code,7204,46529.0,248493.2000000001,13718630
+codex,1240,,,
+opencode,233,,,
+cursor,19,,,

@@ -1,0 +1,1 @@
+{"id": "fc67bac3d0eb8837f3072b9c", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1950, "output_tokens": 54}, "result": {"was_result_referenced_later": false, "fraction_of_result_needed": "none", "reason": "No later record uses any content from the format output; only the exit code is implied by the assistant's summary."}, "ts": 1789153608.05935}

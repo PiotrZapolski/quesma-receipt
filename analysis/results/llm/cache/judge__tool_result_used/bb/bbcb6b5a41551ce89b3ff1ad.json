@@ -1,0 +1,1 @@
+{"id": "bbcb6b5a41551ce89b3ff1ad", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1869, "output_tokens": 57}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "The later apply_patch (18403) used only the failing assertion line from the test output to make it wrap-insensitive."}, "ts": 1789153602.944972}

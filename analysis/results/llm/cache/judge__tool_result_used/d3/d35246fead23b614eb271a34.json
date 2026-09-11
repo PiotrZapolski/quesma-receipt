@@ -1,0 +1,1 @@
+{"id": "d35246fead23b614eb271a34", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2601, "output_tokens": 57}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later record 655 used the failure details (new spec, 320x740 overflow) from the log to decide next steps."}, "ts": 1789153606.577536}

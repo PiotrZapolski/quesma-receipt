@@ -1,0 +1,1 @@
+{"id": "a4b414212e13a97a24d9f863", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 4809, "output_tokens": 47}, "result": {"was_full_rewrite_needed": true, "estimated_lines_actually_changed": 0, "reason": "The file is brand new; the Write created a new plan document from scratch."}, "ts": 1789153551.423413}

@@ -1,0 +1,1 @@
+{"id": "9b6e68a07bd88a7d6d0888fe", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2370, "output_tokens": 54}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "The failing assertion and expected string from the test output were used in the apply_patch at record 5096."}, "ts": 1789153607.5313978}

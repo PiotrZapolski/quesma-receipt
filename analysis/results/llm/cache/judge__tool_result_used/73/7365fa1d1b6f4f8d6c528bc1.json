@@ -1,0 +1,1 @@
+{"id": "7365fa1d1b6f4f8d6c528bc1", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1654, "output_tokens": 51}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "The failure output identified the exact assertion mismatch, leading to the regex patch in record 16889."}, "ts": 1789153602.06844}

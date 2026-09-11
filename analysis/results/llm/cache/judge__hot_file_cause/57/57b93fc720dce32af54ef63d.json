@@ -1,0 +1,1 @@
+{"id": "57b93fc720dce32af54ef63d", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 3621, "output_tokens": 41}, "result": {"cause": "agent_regression", "reason": "Agent is fixing issues it introduced during refactoring: restoring IDE tag stripping, startOffset handling, and Gemini format detection."}, "ts": 1789153616.29142}

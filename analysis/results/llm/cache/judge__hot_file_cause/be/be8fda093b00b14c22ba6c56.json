@@ -1,0 +1,1 @@
+{"id": "be8fda093b00b14c22ba6c56", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2819, "output_tokens": 44}, "result": {"cause": "agent_regression", "reason": "The agent is removing code it previously added (compact transcript logic) and reverting related fields, indicating it is fixing its own earlier changes."}, "ts": 1789153614.1915772}

@@ -1,0 +1,1 @@
+{"id": "28125a8954643211e44f4f1b", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1874, "output_tokens": 51}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "The later apply_patch used the two failing test file names and the assertion mismatch from the output."}, "ts": 1789153594.626975}

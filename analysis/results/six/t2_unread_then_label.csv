@@ -1,0 +1,9 @@
+label,replies,unread,pct_unread,median_reply_chars,median_delta_s,unread_long_over_3000_chars
+follow_up,23008,2392,10.4,806.0,114.0,472
+approval,10599,1911,18.0,976.0,73.0,385
+question,10521,865,8.2,813.0,123.0,139
+meta_other,9167,2752,30.0,233.0,36.0,56
+failure_report,5755,293,5.1,520.0,154.0,13
+correction,4327,386,8.9,719.0,91.0,41
+new_task,2600,157,6.0,476.0,207.0,30
+interruption,551,159,28.9,237.0,26.0,5

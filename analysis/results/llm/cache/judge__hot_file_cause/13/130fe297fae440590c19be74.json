@@ -1,0 +1,1 @@
+{"id": "130fe297fae440590c19be74", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2199, "output_tokens": 46}, "result": {"cause": "architecture_hub", "reason": "CLAUDE.md is a central documentation file that agents edit to add guidance for new features, as seen here adding agent-safe CLI fallback instructions."}, "ts": 1789153618.305553}

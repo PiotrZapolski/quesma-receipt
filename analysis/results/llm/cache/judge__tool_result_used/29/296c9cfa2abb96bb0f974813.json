@@ -1,0 +1,1 @@
+{"id": "296c9cfa2abb96bb0f974813", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2638, "output_tokens": 48}, "result": {"was_result_referenced_later": false, "fraction_of_result_needed": "none", "reason": "No later record uses information from this slice; subsequent work searches viewport coverage independently."}, "ts": 1789153609.2971048}

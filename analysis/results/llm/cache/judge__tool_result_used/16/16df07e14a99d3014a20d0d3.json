@@ -1,0 +1,1 @@
+{"id": "16df07e14a99d3014a20d0d3", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2003, "output_tokens": 49}, "result": {"was_result_referenced_later": false, "fraction_of_result_needed": "none", "reason": "No later record uses any information from the formatting output; subsequent actions concern Docker cleanup only."}, "ts": 1789153603.661438}

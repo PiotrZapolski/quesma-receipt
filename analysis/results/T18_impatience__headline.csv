@@ -1,0 +1,2 @@
+interrupts,sessions_with_at_least_one_interrupt,usd_sunk_before_interrupts,pct_of_total_usd,usd_per_committed_line_interrupted_sessions,usd_per_committed_line_calm_sessions,queue_operation_events
+4260,1948,5259.339956149995,4.507617332913716,0.008262753456059235,0.005112737405909749,254171

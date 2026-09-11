@@ -1,0 +1,1 @@
+{"id": "0fa62736e73dfea8429af358", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2789, "output_tokens": 52}, "result": {"was_result_referenced_later": false, "fraction_of_result_needed": "none", "reason": "No later record uses information from hooks_test.go; subsequent calls only check git log and fetch Gemini docs."}, "ts": 1789153573.465796}

@@ -1,0 +1,4 @@
+agent,reads,reads_within_5_calls_of_a_write,pct_of_reads,reread_chars,usd_fresh_input_price
+claude_code,143978,22334,15.512092125185792,45897929,54.8184722500001
+opencode,15865,667,4.204223132682005,2933859,1.1589620625000001
+cursor,1696,103,6.07311320754717,0,

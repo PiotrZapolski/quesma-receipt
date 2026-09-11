@@ -1,0 +1,1 @@
+{"id": "c6b78af1b1d7df52cd8e7d04", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1920, "output_tokens": 52}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later record 7596 likely used the failing test name and assertion details to fix the stabilization-source spec."}, "ts": 1789153607.75297}

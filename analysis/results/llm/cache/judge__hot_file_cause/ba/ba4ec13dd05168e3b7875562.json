@@ -1,0 +1,1 @@
+{"id": "ba4ec13dd05168e3b7875562", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2881, "output_tokens": 45}, "result": {"cause": "agent_regression", "reason": "The agent is fixing a regression it introduced in attach.go, as shown by the failing test and patch to replace content lookup with metadata-only check."}, "ts": 1789153618.120097}

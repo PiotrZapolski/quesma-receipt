@@ -1,0 +1,1 @@
+{"id": "424e7172147ecd1eb4b2488c", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 6844, "output_tokens": 58}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later read eval_metadata.json for eval-8, whose path was visible in the glob result; only that one path was used."}, "ts": 1789153586.78558}

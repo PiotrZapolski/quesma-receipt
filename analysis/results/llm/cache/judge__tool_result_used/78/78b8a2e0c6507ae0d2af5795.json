@@ -1,0 +1,1 @@
+{"id": "78b8a2e0c6507ae0d2af5795", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 2235, "output_tokens": 57}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later assistant text cites 'total=1' and cleanup/TTL behavior from the result, but only a few lines were needed."}, "ts": 1789153601.151337}

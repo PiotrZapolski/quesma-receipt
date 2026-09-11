@@ -1,0 +1,1 @@
+{"id": "dabc99f784d600de78c2dab0", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1058, "output_tokens": 44}, "result": {"cause": "architecture_hub", "reason": "README.md is the central documentation index; user requests adding a Deepwiki reference below Getting Started, indicating it's a hub for doc links."}, "ts": 1789153622.369034}

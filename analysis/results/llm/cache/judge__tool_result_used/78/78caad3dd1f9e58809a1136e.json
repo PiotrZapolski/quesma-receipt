@@ -1,0 +1,1 @@
+{"id": "78caad3dd1f9e58809a1136e", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 4156, "output_tokens": 59}, "result": {"was_result_referenced_later": true, "fraction_of_result_needed": "small", "reason": "Later assistant text at 6972 cites TTL default of 2 hours from the rg output, but only a few lines were needed."}, "ts": 1789153596.099041}

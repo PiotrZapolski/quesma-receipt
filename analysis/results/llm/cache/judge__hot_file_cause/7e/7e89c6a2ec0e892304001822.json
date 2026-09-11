@@ -1,0 +1,1 @@
+{"id": "7e89c6a2ec0e892304001822", "provider": "deepseek", "model": "deepseek-v4-pro", "usage": {"input_tokens": 1714, "output_tokens": 48}, "result": {"cause": "agent_regression", "reason": "Agent is fixing its own prior damage: replacing 'metadata branch' phrasing with 'primary metadata ref' after earlier commit 308d1ae706 changed terminology."}, "ts": 1789153620.2447639}
