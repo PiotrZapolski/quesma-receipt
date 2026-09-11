@@ -1,9 +1,26 @@
-<p align="center"><img src="docs/assets/logo.svg" width="200"></p>
+<p align="center">
+  <img src="docs/assets/quesma-logo.svg" alt="Quesma" width="280">
+</p>
 
 <h1 align="center">RACHUNEK ZA TOKENY</h1>
+<p align="center"><b>TOKEN ECONOMICS</b> of coding agents, served as a bill<br>
+<sub>QUESMA x VIBESTARS / HACKATHON</sub></p>
 
-<p align="center"><b>A pitch deck shaped like an endless thermal receipt.</b><br>
-<sub>9 770 sessions, 933 529 API calls, 116 677 USD. Line by line.</sub></p>
+This project was built during a **Vibestars hackathon** session in partnership with
+**[Quesma](https://quesma.com)**. The task was open-ended: take the
+`swe-chat-enhanced-2026-07-05` dataset (9 770 agent coding sessions from Claude
+Code, Codex, OpenCode and Cursor, 17,8 GB of raw transcripts), analyze it end to
+end, and find where the tokens actually burn. Not "how many tokens", but which
+mechanisms cost money, who controls them (the model, the harness, or the human),
+and what a team could change tomorrow. The result had to be two things at once: a
+reproducible analysis with the numbers to back every claim, and a pitch that a room
+understands in five minutes.
+
+The analysis lives in [`analysis/`](analysis/) and its full write-up in
+[`FINDINGS.md`](FINDINGS.md) (24 theses, 4 layers, every amount priced call by call
+against the official Anthropic and OpenAI rate cards). The pitch is this page: six
+of those findings, each a priced line item on a receipt, live at
+[quesma.agentshub.pl](https://quesma.agentshub.pl).
 
 This is a static page that hands the audience a bill. It presents six findings from an analysis of the SWE-chat enhanced 2026-07-05 dataset: 9 770 agent coding sessions, 17,8 GB of raw transcripts, priced call by call against the official Anthropic and OpenAI rate cards. The hero asks `Kartą czy gotówką?` ("Card or cash?") and the page answers it over eight slides. Live at [quesma.agentshub.pl](https://quesma.agentshub.pl).
 
