@@ -1,0 +1,13 @@
+# Nakladka produkcyjna (serwer agentshub, za wspolnym Caddy).
+# - brak portow hosta: Caddy siega do kontenera po nazwie w sieci zoyeai_sail
+services:
+  web:
+    container_name: quesma-web
+    ports: !override []
+    networks: [default, caddy]
+    restart: unless-stopped
+
+networks:
+  caddy:
+    external: true
+    name: zoyeai_sail

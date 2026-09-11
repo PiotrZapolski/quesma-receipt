@@ -1,0 +1,71 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**.md'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-quesma-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy na Hetzner (prod)
+    runs-on: [self-hosted, hetzner]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      # Strona jest statyczna, wiec zamiast testow robimy smoke check skladni JS.
+      - name: Smoke check (node --check na site/js)
+        run: |
+          set -euo pipefail
+          found=0
+          while IFS= read -r -d '' f; do
+            echo "check $f"
+            node --check "$f"
+            found=$((found + 1))
+          done < <(find site/js -type f -name '*.js' -print0)
+          if [ "$found" -eq 0 ]; then
+            echo "Brak plikow .js w site/js - cos jest nie tak"
+            exit 1
+          fi
+          echo "OK: sprawdzono $found plikow"
+
+      # Runner stoi na maszynie produkcyjnej, wiec deploy leci lokalnie - bez SSH.
+      - name: Pull, rebuild, restart
+        run: |
+          set -euo pipefail
+          APP_DIR=/var/www/clients/quesma
+          git config --global --add safe.directory "$APP_DIR"
+          cd "$APP_DIR"
+          echo "::group::git pull"
+          git fetch --prune origin
+          git reset --hard origin/main
+          git log -1 --oneline
+          echo "::endgroup::"
+
+          echo "::group::docker compose up --build"
+          docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build --remove-orphans
+          echo "::endgroup::"
+
+          echo "::group::prune old images"
+          docker image prune -f --filter "until=72h" || true
+          echo "::endgroup::"
+
+          echo "::group::healthcheck"
+          for i in $(seq 1 30); do
+            if curl -fsS -H 'Host: quesma.agentshub.pl' http://localhost/healthz -o /dev/null; then
+              echo "OK: quesma.agentshub.pl odpowiada"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "BLAD: brak odpowiedzi w 60s"
+          docker compose -f docker-compose.yml -f docker-compose.prod.yml logs --tail=120 web
+          exit 1
+          echo "::endgroup::"

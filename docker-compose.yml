@@ -1,0 +1,11 @@
+# Quesma - statyczna strona (paragon) serwowana przez nginx.
+# Nie ma builda: site/ jest montowane wprost do kontenera.
+services:
+  web:
+    image: nginx:1.27-alpine
+    volumes:
+      - ./site:/usr/share/nginx/html:ro
+      - ./deploy/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - "8095:80"
+    restart: unless-stopped

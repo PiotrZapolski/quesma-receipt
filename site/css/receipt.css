@@ -788,7 +788,7 @@ html {
 
   .rx-slide {
     display: grid;
-    grid-template-columns: 42fr 58fr;
+    grid-template-columns: 1fr 1fr;
     gap: var(--slide-gap);
     align-items: center;
     max-height: calc(var(--slide-h) - 2 * var(--slide-pad));
@@ -809,10 +809,11 @@ html {
 
   /* ---- compact type -------------------------------------------------- */
 
+  /* the headline is the hero of the slide */
   .rx-title {
     font-size: var(--fs-title-slide);
-    line-height: var(--lh-title);
-    margin-bottom: var(--gap-v-sm);
+    line-height: var(--lh-title-slide);
+    margin-bottom: var(--gap-v);
   }
 
   .rx-section--hero .rx-title {
@@ -836,16 +837,23 @@ html {
     margin-bottom: 0;
   }
 
-  .rx-big { margin-bottom: var(--gap-v-sm); }
+  /* the number steps back and sits on one line with its label to the right */
+  .rx-big {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: var(--gap-v-sm);
+  }
 
   .rx-big .rx-num {
+    flex: none;
     font-size: var(--fs-big-slide);
     line-height: 0.92;
   }
 
   .rx-big__label {
-    margin-top: var(--gap-v-sm);
-    max-width: none;
+    margin-top: 0;
+    max-width: 18em;
     font-size: var(--fs-mono-sm);
   }
 

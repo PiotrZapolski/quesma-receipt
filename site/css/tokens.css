@@ -103,14 +103,13 @@
   --chart-gap:     clamp(0.6rem, 1.6svh, 1.25rem);
   --stamp-h:       clamp(120px, 24svh, 260px);
 
-  /* Compact slide type scale.
-     The section title clamps the 3.2vw term with an svh term as well: a pure
-     width based title runs to three lines on a 1366x768 laptop and pushes the
-     copy column past the slide. min() keeps the wide-and-tall case identical
-     and only shrinks the title when the viewport is short. */
-  --fs-title-slide: clamp(1.5rem, min(3.2vw, 4.2svh), 2.7rem);
+  /* Pitch cut slide type scale.
+     A slide now carries one headline, one number and one small chart, so the
+     headline is the hero of the slide and the number steps back behind it. */
+  --fs-title-slide: clamp(2rem, 3.6vw, 3.4rem);
+  --lh-title-slide: 1.02;
   --fs-title-hero:  clamp(2.6rem, 5vw, 4.4rem);
-  --fs-big-slide:   clamp(2.4rem, 7svh, 4.6rem);
-  --fs-lede-slide:  clamp(0.95rem, 1.1vw, 1.1rem);
+  --fs-big-slide:   clamp(2rem, 5.5svh, 3.4rem);
+  --fs-lede-slide:  clamp(1.05rem, 1.4vw, 1.3rem);
   --fs-foot-slide:  0.68rem;
 }

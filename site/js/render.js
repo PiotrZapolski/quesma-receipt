@@ -189,7 +189,7 @@
     setTitleHtml(title, hero.title);
     append(s.copy, title);
 
-    append(s.copy, h('p', 'rx-lede', hero.lede));
+    if (hero.lede) { append(s.copy, h('p', 'rx-lede', hero.lede)); }
 
     if (hero.highlight) {
       var p = h('p', 'rx-highlight');
@@ -236,7 +236,8 @@
     setTitleHtml(title, data.title);
     append(s.copy, title);
 
-    append(s.copy, h('p', 'rx-lede', data.lede));
+    /* pitch cut: thesis slides carry no lede, the headline is the sentence */
+    if (data.lede) { append(s.copy, h('p', 'rx-lede', data.lede)); }
 
     if (data.big) {
       var big = h('div', 'rx-big');

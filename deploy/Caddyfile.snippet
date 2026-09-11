@@ -1,0 +1,5 @@
+# Quesma - wklej ten blok do wspolnego Caddyfile na serwerze i przeladuj Caddy.
+quesma.agentshub.pl {
+	encode gzip
+	reverse_proxy quesma-web:80
+}

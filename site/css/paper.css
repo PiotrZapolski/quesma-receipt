@@ -529,10 +529,13 @@
 
   /* ---- compact mono type -------------------------------------------- */
 
+  /* pitch cut: the headline is the hero of the slide here too, only in
+     mono uppercase, which sets wider, so the scale sits a step below the
+     sans variant while still leading the slide */
   .rx-page--paper .rx-title {
-    font-size: clamp(1.1rem, 1.6vw, 1.5rem);
-    line-height: 1.15;
-    margin-bottom: var(--gap-v-sm);
+    font-size: clamp(1.4rem, 2.2vw, 2.1rem);
+    line-height: 1.12;
+    margin-bottom: var(--gap-v);
   }
 
   .rx-page--paper .rx-section--hero .rx-title {
@@ -547,7 +550,7 @@
   }
 
   .rx-page--paper .rx-lede {
-    font-size: 0.72rem;
+    font-size: clamp(0.85rem, 1vw, 1rem);
     line-height: 1.5;
     margin-bottom: var(--gap-v-sm);
   }
@@ -563,6 +566,13 @@
   .rx-page--paper .rx-big .rx-num {
     font-size: var(--fs-big-slide);
     line-height: 1;
+  }
+
+  /* the non-slide paper rule sets max-width: none and would otherwise win
+     over .rx-big__label in the slide block */
+  .rx-page--paper .rx-big__label {
+    margin-top: 0;
+    max-width: 18em;
   }
 
   .rx-page--paper .rx-lineitem {
