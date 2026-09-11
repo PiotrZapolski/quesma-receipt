@@ -81,8 +81,8 @@
   /* ---- Layout --------------------------------------------------------- */
   --strip-w:       min(100% - 3rem, 84rem);
   --strip-pad:     clamp(1rem, 4vw, 3.25rem);
-  --tooth-w:       14px;
-  --tooth-h:       7px;
+  --tooth-w:       26px;
+  --tooth-h:       18px;
   --hairline-w:    1px;
 
   /* ---- Slide mode ----------------------------------------------------- */
@@ -108,7 +108,7 @@
      headline is the hero of the slide and the number steps back behind it. */
   --fs-title-slide: clamp(2rem, 3.6vw, 3.4rem);
   --lh-title-slide: 1.02;
-  --fs-title-hero:  clamp(2.6rem, 5vw, 4.4rem);
+  --fs-title-hero:  clamp(2.2rem, 4.2vw, 3.6rem);
   --fs-big-slide:   clamp(2rem, 5.5svh, 3.4rem);
   --fs-lede-slide:  clamp(1.05rem, 1.4vw, 1.3rem);
   --fs-foot-slide:  0.68rem;

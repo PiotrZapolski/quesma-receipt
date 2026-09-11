@@ -182,7 +182,22 @@
     var print = h('div', 'rx-print');
     var s = slide('hero');
 
-    /* left: stars, headline, lede, highlighter */
+    /* left: receipt header block, stars, headline, lede, highlighter */
+    if (hero.invoice) { append(s.copy, h('p', 'rx-invoice', hero.invoice)); }
+
+    if (hero.meta && hero.meta.length) {
+      var meta = h('ul', 'rx-meta');
+      hero.meta.forEach(function (row) {
+        var li = h('li', 'rx-meta__row');
+        append(li,
+          h('span', 'rx-meta__k', row.k),
+          h('span', 'rx-meta__v', row.v)
+        );
+        append(meta, li);
+      });
+      append(s.copy, meta);
+    }
+
     append(s.copy, h('p', 'rx-stars', hero.stars));
 
     var title = h('h1', 'rx-title');
@@ -333,6 +348,9 @@
       append(s.data, barcode);
       append(s.data, h('p', 'rx-barcode__digits', '9770 0116677 2026 0705'));
     }
+
+    /* decorative fiscal footer, under the barcode in both variants */
+    if (closing.fiscal) { append(s.data, h('p', 'rx-fiscal', closing.fiscal)); }
 
     append(print, s.root);
     append(section, print);

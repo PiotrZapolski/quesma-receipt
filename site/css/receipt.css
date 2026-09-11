@@ -12,7 +12,15 @@ html { -webkit-text-size-adjust: 100%; }
 
 body.rx-page {
   margin: 0;
-  background: var(--canvas);
+  /* a darker desk under the paper, with a soft vignette, so the bright strip
+     reads as a physical receipt lying on a surface */
+  background-color: var(--paper-deep);
+  background-image: radial-gradient(
+    ellipse at 50% 0%,
+    var(--paper-muted),
+    var(--paper-deep) 70%
+  );
+  background-attachment: fixed;
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: var(--fs-body);
@@ -193,29 +201,55 @@ ul { padding: 0; list-style: none; }
   width: min(100%, var(--strip-w));
   margin: calc(var(--tooth-h) + var(--sp-7)) auto calc(var(--tooth-h) + var(--sp-9));
   padding: var(--sp-8) var(--strip-pad);
-  background: var(--paper-bright);
+  background-color: var(--paper-bright);
+  /* thermal banding: 1 px print lines every 3 px, at about 2% ink */
+  background-image: repeating-linear-gradient(
+    180deg,
+    rgb(var(--ink-rgb) / 0.02) 0 1px,
+    rgb(var(--ink-rgb) / 0) 1px 3px
+  );
+  /* crumple shadow, five layers, as heavy as variant B */
   box-shadow:
-    0 1px 0 rgb(var(--ink-rgb) / 0.05),
-    0 2px 6px rgb(var(--ink-rgb) / 0.05),
-    0 14px 34px rgb(var(--ink-rgb) / 0.06),
-    var(--shadow-x) 48px 90px rgb(var(--ink-rgb) / 0.05);
+    0 1px 0 rgb(var(--ink-rgb) / 0.10),
+    0 3px 8px rgb(var(--ink-rgb) / 0.10),
+    0 12px 26px rgb(var(--ink-rgb) / 0.14),
+    0 30px 60px rgb(var(--ink-rgb) / 0.12),
+    var(--shadow-x) 60px 110px rgb(var(--ink-rgb) / 0.10);
 }
 
 /* Torn zigzag edges. Pure CSS, scales to any width, no JS.
-   One tooth is --tooth-w wide and --tooth-h tall (45 degree teeth). */
+   One tooth is --tooth-w wide and --tooth-h tall (45 degree teeth).
+
+   Two layers: the bright teeth in front, and the same zigzag offset a few px
+   down and to the right in --paper-muted behind them, so the tear has depth.
+   The mask carries both shapes (two mask layers union by default), while the
+   bright zigzag is painted as a background layer over a muted ground, so the
+   muted layer shows exactly where the offset copy sticks out. */
 .rx-strip::before,
 .rx-strip::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
-  height: var(--tooth-h);
-  background: var(--paper-bright);
-  -webkit-mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg)
-                50% 0 / var(--tooth-w) 100% repeat-x;
-          mask: conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg)
-                50% 0 / var(--tooth-w) 100% repeat-x;
-  filter: drop-shadow(0 1px 0 rgb(var(--ink-rgb) / 0.05));
+  height: calc(var(--tooth-h) + 3px);
+  background-color: var(--paper-muted);
+  background-image:
+    conic-gradient(from -45deg at bottom,
+      #0000, var(--paper-bright) 1deg 89deg, #0000 90deg);
+  background-size: var(--tooth-w) var(--tooth-h);
+  background-position: 50% 0;
+  background-repeat: repeat-x;
+  -webkit-mask:
+    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg)
+      50% 0 / var(--tooth-w) var(--tooth-h) repeat-x,
+    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg)
+      calc(50% + 5px) 3px / var(--tooth-w) var(--tooth-h) repeat-x;
+          mask:
+    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg)
+      50% 0 / var(--tooth-w) var(--tooth-h) repeat-x,
+    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg)
+      calc(50% + 5px) 3px / var(--tooth-w) var(--tooth-h) repeat-x;
+  filter: drop-shadow(0 1px 0 rgb(var(--ink-rgb) / 0.10));
   pointer-events: none;
 }
 
@@ -285,6 +319,39 @@ ul { padding: 0; list-style: none; }
 /* ====================================================================== */
 /* Typography inside the receipt                                          */
 /* ====================================================================== */
+
+/* ---- hero receipt header block: RACHUNEK + the meta rows -------------- */
+
+.rx-invoice {
+  font-family: var(--font-mono);
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  line-height: 0.95;
+  color: var(--ink);
+  border-bottom: 1px dotted var(--ink);
+  padding-bottom: 0.2em;
+  margin-bottom: 0.6rem;
+}
+
+.rx-meta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1rem;
+  row-gap: 0.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: var(--ls-mono);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* the row is a pass through, so the key and the value become grid items and
+   every key column lines up across all rows */
+.rx-meta__row { display: contents; }
+
+.rx-meta__k { color: var(--graphite); }
+.rx-meta__v { color: var(--ink); }
 
 .rx-stars {
   font-family: var(--font-mono);
@@ -618,9 +685,8 @@ ul { padding: 0; list-style: none; }
   align-items: baseline;
   flex-wrap: wrap;
   gap: 0.4em;
-  padding: var(--sp-4) 0;
-  border-top: 3px solid var(--ink);
-  border-bottom: 3px solid var(--ink);
+  padding: 0.8rem 1rem;
+  border: 3px double var(--ink);
   font-family: var(--font-mono);
   text-transform: uppercase;
   letter-spacing: var(--ls-mono);
@@ -628,7 +694,7 @@ ul { padding: 0; list-style: none; }
 
 .rx-total__label {
   flex: none;
-  font-size: var(--fs-mono);
+  font-size: 1rem;
   color: var(--ink);
 }
 
@@ -655,6 +721,16 @@ ul { padding: 0; list-style: none; }
   font-family: var(--font-mono);
   font-size: var(--fs-mono-sm);
   letter-spacing: var(--ls-mono);
+  color: var(--faint);
+  text-align: center;
+}
+
+/* decorative fiscal footer under the barcode */
+.rx-fiscal {
+  margin-top: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
   color: var(--faint);
   text-align: center;
 }
@@ -829,7 +905,20 @@ html {
     margin-bottom: var(--gap-v-sm);
   }
 
-  .rx-stars { margin-bottom: var(--gap-v); }
+  .rx-stars { margin-bottom: var(--gap-v-sm); }
+
+  /* The hero copy column now carries the receipt header block, so the block
+     is measured against the slide: at 1366x768 the slide gives about 660px
+     inside the padding, and the column spends about 68px on RACHUNEK plus
+     its dotted rule, about 97px on the five meta rows, about 27px on the
+     stars line, about 112px on a two line headline and about 57px on a two
+     line lede. That is roughly 360px, comfortably inside the slide. */
+  .rx-invoice {
+    font-size: clamp(2.4rem, 6.5svh, 4.6rem);
+    margin-bottom: var(--gap-v-sm);
+  }
+
+  .rx-meta { margin-bottom: var(--gap-v); }
 
   .rx-highlight {
     font-size: var(--fs-lede-slide);
@@ -914,7 +1003,7 @@ html {
 
   .rx-section--closing .rx-line { padding: 0.3rem 0; }
 
-  .rx-total { padding: var(--gap-v) 0; }
+  .rx-total { padding: var(--gap-v) 1rem; }
 
   .rx-total .rx-num {
     font-size: var(--fs-big-slide);

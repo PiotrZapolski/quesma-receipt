@@ -50,9 +50,9 @@
 }
 
 /* the zigzag teeth stay, they just sit on the brighter paper */
+/* the two layer zigzag stays, the bright teeth just sit on brighter paper */
 .rx-page--paper .rx-strip::before,
 .rx-page--paper .rx-strip::after {
-  background: var(--paper-bright);
   filter: drop-shadow(0 1px 0 rgb(var(--ink-rgb) / 0.12));
 }
 
@@ -131,6 +131,16 @@
 /* ====================================================================== */
 /* Type inside the receipt                                                */
 /* ====================================================================== */
+
+/* ---- the hero receipt header block, centred on the thermal strip ------ */
+
+.rx-page--paper .rx-invoice { text-align: center; }
+
+.rx-page--paper .rx-meta {
+  justify-content: center;
+  width: fit-content;
+  margin-inline: auto;
+}
 
 .rx-page--paper .rx-stars {
   font-size: 0.95rem;
@@ -422,8 +432,7 @@
   align-items: center;
   text-align: center;
   gap: 0.2em;
-  padding: var(--sp-4) 0;
-  border-block: 3px double var(--ink);
+  padding: var(--sp-4) 1rem;
 }
 
 .rx-page--paper .rx-total__label { letter-spacing: 0.18em; }
@@ -676,7 +685,7 @@
     transform: rotate(-8deg);
   }
 
-  .rx-page--paper .rx-total { padding: var(--gap-v) 0; }
+  .rx-page--paper .rx-total { padding: var(--gap-v) 1rem; }
 
   .rx-page--paper .rx-thanks { margin: var(--gap-v) 0; }
 

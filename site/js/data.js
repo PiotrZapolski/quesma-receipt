@@ -22,6 +22,14 @@ window.RECEIPT_DATA = {
   /* ------------------------------------------------------------------ */
 
   hero: {
+    invoice: 'RACHUNEK',
+    meta: [
+      { k: 'NR',      v: '0001/2026-07-05' },
+      { k: 'DATA',    v: '11.09.2026' },
+      { k: 'KASA',    v: 'SWE-chat enhanced' },
+      { k: 'KASJER',  v: 'Quesma' },
+      { k: 'POZYCJI', v: '6' }
+    ],
     stars: '* * * * RACHUNEK ZA TOKENY * * * *',
     title: 'Kartą czy <em>gotówką</em>?',
     lede: 'Wystawiamy wam rachunek za spalone tokeny. 9 770 sesji, pozycja po pozycji.',
@@ -144,7 +152,7 @@ window.RECEIPT_DATA = {
         }
       ],
       callouts: [],
-      gap: 'LUKA W DANYCH: transkrypty subagentów nieobecne',
+      gap: null,
       footnote: null,
       scene: 'fish',
       sceneLabel: 'RODZIC'
@@ -188,27 +196,27 @@ window.RECEIPT_DATA = {
     {
       id: 't5',
       number: '05',
-      lineItem: 'SLEEP',
+      lineItem: 'POLLING',
       usd: 1360,
-      title: 'Agent <em>przespał</em> 245 godzin w pętli sleep.',
-      lede: '',
+      title: 'Agent pyta w kółko, czy proces <em>już</em> się skończył.',
+      lede: 'Każde sprawdzenie statusu płaci pełny kontekst. Gdyby proces sam zgłaszał koniec, żadne z nich nie byłoby potrzebne.',
       big: {
-        value: 202,
+        value: 10316,
         decimals: 0,
-        suffix: ' h',
-        label: 'w samych wywołaniach sleep 300 s i dłuższych'
+        suffix: '',
+        label: 'wywołań sprawdzających status w 1 127 sesjach'
       },
       charts: [
         {
-          type: 'histogram',
+          type: 'bars',
           id: 't5a',
-          title: 'PRZESPANE GODZINY WEDŁUG DŁUGOŚCI SLEEP',
-          bins: [
-            { label: '<10 s',    value: 2.8,  display: '2,8 h',  tone: 'ink' },
-            { label: '10-29 s',  value: 6.2,  display: '6,2 h',  tone: 'ink' },
-            { label: '30-59 s',  value: 4.7,  display: '4,7 h',  tone: 'ink' },
-            { label: '60-299 s', value: 29.4, display: '29,4 h', tone: 'warn' },
-            { label: '>=300 s',  value: 202,  display: '202 h',  tone: 'bad' }
+          title: 'SERIE POLLINGU W OKNIE 5 WYWOŁAŃ',
+          max: 6000,
+          rows: [
+            { label: 'pojedyncze',         value: 5690, display: '5 690', tone: 'ink' },
+            { label: '2 z rzędu',          value: 3029, display: '3 029', tone: 'ink' },
+            { label: '3 z rzędu',          value: 975,  display: '975',   tone: 'warn' },
+            { label: '4 i więcej z rzędu', value: 622,  display: '622',   tone: 'bad' }
           ]
         }
       ],
@@ -216,7 +224,7 @@ window.RECEIPT_DATA = {
       gap: null,
       footnote: null,
       scene: 'beach',
-      sceneLabel: 'SLEEP'
+      sceneLabel: 'CZEKANIE'
     },
 
     /* -------------------------------- 06 ---------------------------- */
@@ -226,13 +234,13 @@ window.RECEIPT_DATA = {
       lineItem: 'GORĄCE PLIKI',
       usd: 0,
       usdDisplay: 'PODWÓJNA ROBOTA',
-      title: 'Jeden plik, 120 sesji, 8 osób, w tym <em>samym czasie</em>.',
-      lede: '',
+      title: 'Jeden plik, 120 sesji, edycje <em>nakładają</em> się w czasie.',
+      lede: 'Sesje agentów edytują ten sam plik równolegle, a potem agent poprawia to, co sam popsuł.',
       big: {
-        value: 28,
+        value: 2908,
         decimals: 0,
-        suffix: '%',
-        label: 'edycji gorących plików to agent naprawiający to, co sam zepsuł'
+        suffix: '',
+        label: 'par sesji, które edytowały ten sam plik w tym samym czasie'
       },
       charts: [
         {
@@ -242,9 +250,21 @@ window.RECEIPT_DATA = {
           unit: '%',
           max: 60,
           rows: [
-            { label: 'hub architektury', value: 55, display: '55%', tone: 'ink' },
-            { label: 'regresja agenta',  value: 28, display: '28%', tone: 'bad' },
-            { label: 'plik testowy',     value: 9,  display: '9%',  tone: 'ink' }
+            {
+              label: 'hub architektury',
+              value: 55,
+              display: '55%',
+              tone: 'ink',
+              sub: 'każda zmiana przez niego przechodzi'
+            },
+            {
+              label: 'regresja agenta',
+              value: 28,
+              display: '28%',
+              tone: 'bad',
+              sub: 'naprawia to, co sam zepsuł'
+            },
+            { label: 'plik testowy', value: 9, display: '9%', tone: 'neutral' }
           ]
         }
       ],
@@ -274,6 +294,7 @@ window.RECEIPT_DATA = {
     stamp: 'NIEZAPŁACONE',
     thanks: 'DZIĘKUJEMY ZA WSZYSTKIE DANE',
     sources: 'SWE-chat enhanced 2026-07-05 · analiza Quesma',
+    fiscal: 'NIP 0000000000 · KASA 01 · W 2026.07.05',
     scene: 'barcode',
     sceneLabel: 'KONIEC'
   }
