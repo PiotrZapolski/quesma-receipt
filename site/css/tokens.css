@@ -1,0 +1,116 @@
+/* tokens.css - Quesma "lab" design system tokens.
+   The ONLY place in the project where a colour literal may appear
+   (exception: js/halftone/*.js, which uses the --ink RGB triple 23,20,17). */
+
+:root {
+  color-scheme: light;
+
+  /* ---- Paper and canvas ---------------------------------------------- */
+  --paper:          #f2eee5;
+  --paper-bright:   #fbf9f4;
+  --paper-muted:    #ebe6dc;
+  --paper-deep:     #e5ded1;
+  --canvas:         #f0efed;
+
+  /* ---- Ink ------------------------------------------------------------ */
+  --ink:            #171411;
+  --ink-rgb:        23 20 17;
+  --graphite:       #514c45;
+  --faint:          #606759;
+  --hairline:       #c7c7bc;
+
+  /* ---- Accents -------------------------------------------------------- */
+  --sage:           #747b6b;
+  --vermilion:      #b9523c;
+  --vermilion-deep: #7d3529;
+  --oxblood:        #3b2521;
+  --clay-wash:      #e3c5b9;
+  --sulphur:        #d3b64f;
+  --sulphur-soft:   #e8dca7;
+  --saving:         #2b6d43;
+  --receipt-red:    #b84937;
+
+  /* ---- Chart tone map (charts.js writes data-tone, css reads these) ---- */
+  --tone-ink:       var(--ink);
+  --tone-bad:       var(--vermilion);
+  --tone-good:      var(--saving);
+  --tone-neutral:   var(--sage);
+  --tone-warn:      var(--sulphur);
+  --tone-focus:     var(--oxblood);
+
+  /* ---- Type ----------------------------------------------------------- */
+  --font-sans: "Schibsted Grotesk", Arial, sans-serif;
+  --font-mono: "Fragment Mono", "Courier New", monospace;
+
+  --fs-title:      clamp(3.9rem, 5.6vw, 5.15rem);
+  --fs-title-sec:  clamp(2.6rem, 5.4vw, 4.4rem);
+  --fs-h3:         clamp(1.55rem, 2.5vw, 2.5rem);
+  --fs-big:        clamp(3rem, 8vw, 6rem);
+  --fs-body:       1.0625rem;
+  --fs-lede:       clamp(1.125rem, 1.5vw, 1.35rem);
+  --fs-mono:       0.8rem;
+  --fs-mono-sm:    0.7rem;
+
+  --lh-title:      0.92;
+  --lh-body:       1.55;
+  --lh-mono:       1.45;
+
+  --fw-head:       560;
+  --fw-strong:     680;
+
+  --ls-title:      -0.02em;
+  --ls-mono:       0.055em;
+
+  /* ---- Motion --------------------------------------------------------- */
+  --ease-out:      cubic-bezier(.22, 1, .36, 1);
+  --dur-fast:      0.18s;
+  --dur-mid:       0.42s;
+  --dur-slow:      0.88s;
+
+  /* ---- Space ---------------------------------------------------------- */
+  --sp-1:  0.25rem;
+  --sp-2:  0.5rem;
+  --sp-3:  0.75rem;
+  --sp-4:  1rem;
+  --sp-5:  1.5rem;
+  --sp-6:  2rem;
+  --sp-7:  3rem;
+  --sp-8:  4.5rem;
+  --sp-9:  7rem;
+
+  /* ---- Layout --------------------------------------------------------- */
+  --strip-w:       min(100% - 3rem, 84rem);
+  --strip-pad:     clamp(1rem, 4vw, 3.25rem);
+  --tooth-w:       14px;
+  --tooth-h:       7px;
+  --hairline-w:    1px;
+
+  /* ---- Slide mode ----------------------------------------------------- */
+  /* One section = one slide. The header is exactly --header-h tall, so a
+     slide gets everything below it. svh (not vh) so mobile URL bars do not
+     make a slide taller than the visible viewport. */
+  --header-h:      3rem;
+  --slide-h:       calc(100svh - var(--header-h));
+
+  /* Vertical rhythm inside a slide scales with viewport height, so a
+     1366x768 laptop simply gets tighter gaps instead of an overflow. */
+  --gap-v-sm:      clamp(0.25rem, 0.7svh, 0.5rem);
+  --gap-v:         clamp(0.4rem, 1.2svh, 1rem);
+  --gap-v-lg:      clamp(0.75rem, 2.2svh, 1.6rem);
+
+  --slide-pad:     clamp(1rem, 3svh, 2rem);      /* .rx-section padding-block */
+  --slide-gap:     clamp(1.5rem, 3vw, 3.5rem);   /* copy column to data column */
+  --chart-gap:     clamp(0.6rem, 1.6svh, 1.25rem);
+  --stamp-h:       clamp(120px, 24svh, 260px);
+
+  /* Compact slide type scale.
+     The section title clamps the 3.2vw term with an svh term as well: a pure
+     width based title runs to three lines on a 1366x768 laptop and pushes the
+     copy column past the slide. min() keeps the wide-and-tall case identical
+     and only shrinks the title when the viewport is short. */
+  --fs-title-slide: clamp(1.5rem, min(3.2vw, 4.2svh), 2.7rem);
+  --fs-title-hero:  clamp(2.6rem, 5vw, 4.4rem);
+  --fs-big-slide:   clamp(2.4rem, 7svh, 4.6rem);
+  --fs-lede-slide:  clamp(0.95rem, 1.1vw, 1.1rem);
+  --fs-foot-slide:  0.68rem;
+}

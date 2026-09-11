@@ -1,0 +1,581 @@
+/* Quesma "Rachunek za tokeny" - charts.
+ * Bars, stacked bars, waffles, histograms, paired bars, tables.
+ * Colors come only from css/tokens.css. Square corners, hairline rules,
+ * mono labels, tabular numbers. No shadows, no radii.
+ * Sizes are inline custom properties from charts.js (--w, --h).
+ * Nothing here hides a chart: the page is complete without JS.
+ */
+
+/* ------------------------------------------------------------ chart root */
+
+.chart {
+  margin-block: 1.5rem;
+  color: var(--ink);
+  --tone: var(--ink);
+  --chart-label-w: 9.5rem;
+  --chart-value-w: 4.75rem;
+  --chart-bar-h: 14px;
+  --chart-cell: 12px;
+  --chart-cell-gap: 3px;
+  --chart-hist-h: 160px;
+}
+
+.chart + .chart {
+  margin-top: 2.5rem;
+}
+
+.chart__title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 1.3;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--graphite);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.95rem;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.chart__note {
+  margin: 0.85rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: var(--faint);
+}
+
+/* ------------------------------------------------------------------ tone */
+
+.chart [data-tone] { --tone: var(--ink); }
+.chart [data-tone="ink"] { --tone: var(--ink); }
+.chart [data-tone="bad"] { --tone: var(--vermilion); }
+.chart [data-tone="good"] { --tone: var(--saving); }
+.chart [data-tone="neutral"] { --tone: var(--sage); }
+.chart [data-tone="warn"] { --tone: var(--sulphur); }
+.chart [data-tone="focus"] { --tone: var(--oxblood); }
+
+/* ------------------------------------------------- shared label / value */
+
+.chart-bars__label,
+.chart-stacked__label,
+.chart-paired__label,
+.chart-paired__rowlabel,
+.chart-waffle__legend,
+.chart-hist__label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.35;
+  letter-spacing: 0.05em;
+  color: var(--graphite);
+}
+
+.chart-bars__value,
+.chart-stacked__value,
+.chart-paired__value,
+.chart-hist__value {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.3;
+  letter-spacing: 0.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+/* ------------------------------------------------------------------ bars */
+
+.chart-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.chart-bars__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+}
+
+.chart-bars__label {
+  flex: 0 0 var(--chart-label-w);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.chart-bars__sub {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.045em;
+  color: var(--faint);
+}
+
+.chart-bars__track {
+  position: relative;
+  flex: 1 1 7rem;
+  min-width: 0;
+  height: var(--chart-bar-h);
+  background: var(--paper-deep);
+}
+
+.chart-bars__fill {
+  width: var(--w, 0%);
+  height: 100%;
+  background: var(--tone);
+  transform-origin: left center;
+}
+
+.chart-bars__over {
+  position: absolute;
+  top: 50%;
+  right: 2px;
+  transform: translateY(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 1;
+  color: var(--paper-bright);
+  pointer-events: none;
+}
+
+.chart-bars__value {
+  flex: 0 0 auto;
+  min-width: var(--chart-value-w);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  text-align: right;
+}
+
+.chart-bars__note {
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  color: var(--faint);
+  text-transform: lowercase;
+}
+
+/* ---------------------------------------------------------- stackedBars */
+
+.chart-stacked {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.chart-stacked__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+}
+
+.chart-stacked__label {
+  flex: 0 0 var(--chart-label-w);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.chart-stacked__track {
+  display: flex;
+  flex: 1 1 7rem;
+  min-width: 0;
+  height: var(--chart-bar-h);
+  overflow: hidden;
+  background: var(--paper-deep);
+}
+
+.chart-stacked__part {
+  flex: 0 0 auto;
+  width: var(--w, 0%);
+  height: 100%;
+  background: var(--tone);
+  transform-origin: left center;
+}
+
+.chart-stacked__part + .chart-stacked__part {
+  border-left: 1px solid var(--paper-bright);
+}
+
+/* the unread share reads as hatched paper, not as solid ink */
+.chart-stacked__part[data-tone="bad"] {
+  background-color: var(--paper-bright);
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--vermilion) 0,
+    var(--vermilion) 2px,
+    var(--paper-bright) 2px,
+    var(--paper-bright) 5px
+  );
+}
+
+.chart-stacked__value {
+  flex: 0 0 auto;
+  min-width: var(--chart-value-w);
+  text-align: right;
+}
+
+/* ---------------------------------------------------------------- waffle */
+
+.chart-waffle {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.chart-waffle__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, var(--chart-cell));
+  gap: var(--chart-cell-gap);
+  justify-content: start;
+}
+
+.chart-waffle__cell {
+  display: block;
+  width: var(--chart-cell);
+  height: var(--chart-cell);
+  background: var(--tone);
+  transform-origin: center;
+}
+
+.chart-waffle__legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 1.1rem;
+}
+
+.chart-waffle__legend-note {
+  color: var(--faint);
+}
+
+.chart-waffle__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.chart-waffle__swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: var(--tone);
+}
+
+.chart-waffle__legend-value {
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+/* ------------------------------------------------------------- histogram */
+
+.chart-hist {
+  display: flex;
+  align-items: flex-end;
+  gap: 0;
+}
+
+.chart-hist__bin {
+  display: grid;
+  grid-template-rows: auto var(--chart-hist-h) auto;
+  flex: 1 1 0;
+  min-width: 0;
+  padding-inline: 3px;
+  text-align: center;
+}
+
+.chart-hist__value {
+  padding-bottom: 0.35rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  overflow-wrap: anywhere;
+}
+
+.chart-hist__bar {
+  align-self: end;
+  width: 100%;
+  height: var(--h, 0%);
+  min-height: 2px;
+  background: var(--tone);
+  transform-origin: bottom center;
+}
+
+/* the hairline baseline is the top rule of the label row, so it runs
+   unbroken under every bin */
+.chart-hist__label {
+  padding-top: 0.4rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  border-top: 1px solid var(--hairline);
+  overflow-wrap: anywhere;
+}
+
+/* ------------------------------------------------------------ pairedBars */
+
+.chart-paired {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.chart-paired__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.chart-paired__label {
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: 0.7rem;
+}
+
+.chart-paired__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.7rem;
+}
+
+.chart-paired__rowlabel {
+  flex: 0 0 6.5rem;
+  max-width: 100%;
+  font-size: 0.7rem;
+  color: var(--faint);
+  overflow-wrap: anywhere;
+}
+
+.chart-paired__track {
+  flex: 1 1 7rem;
+  min-width: 0;
+  height: 11px;
+  background: var(--paper-deep);
+}
+
+.chart-paired__fill {
+  width: var(--w, 0%);
+  height: 100%;
+  background: var(--tone);
+  transform-origin: left center;
+}
+
+.chart-paired__value {
+  flex: 0 0 auto;
+  min-width: var(--chart-value-w);
+  text-align: right;
+}
+
+/* ----------------------------------------------------------------- table */
+
+.chart-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.chart-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  background: var(--paper-bright);
+}
+
+.chart-table th {
+  padding: 0.4rem 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-align: left;
+  white-space: nowrap;
+  color: var(--graphite);
+  border-bottom: 1px solid var(--ink);
+}
+
+.chart-table td {
+  padding: 0.45rem 0.6rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.chart-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.chart-table .is-mono {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  overflow-wrap: anywhere;
+}
+
+.chart-table .is-num {
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------------- utilities */
+
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ------------------------------------------------------------ responsive */
+
+@media (max-width: 600px) {
+  .chart {
+    --chart-cell: 10px;
+    --chart-label-w: 7.5rem;
+    --chart-hist-h: 128px;
+  }
+
+  .chart-hist__value,
+  .chart-hist__label {
+    font-size: 0.62rem;
+    letter-spacing: 0.02em;
+  }
+}
+
+@media (max-width: 400px) {
+  /* labels stack above their track, values stay on the track line */
+  .chart-bars__label,
+  .chart-stacked__label {
+    flex: 0 0 100%;
+  }
+
+  .chart-paired__rowlabel {
+    flex: 0 0 4.5rem;
+  }
+
+  .chart {
+    --chart-value-w: 4rem;
+    --chart-cell: 10px;
+  }
+
+  .chart-bars__track,
+  .chart-stacked__track,
+  .chart-paired__track {
+    flex: 1 1 4rem;
+  }
+}
+
+/* ------------------------------------------------------------ slide mode */
+/* Charts live in the right hand column of a slide and must not push it past
+   --slide-h, so everything shrinks: shorter tracks, tighter rows, smaller
+   labels. Phones and short viewports keep the roomier sizes above. */
+
+@media (min-width: 900px) and (min-height: 620px) {
+
+  .chart {
+    margin-block: 0;
+    /* wide enough that repo paths in t6a stay on two lines, not four */
+    --chart-label-w: 10rem;
+    --chart-value-w: 4.25rem;
+    --chart-bar-h: 10px;
+    --chart-cell: 9px;
+    --chart-cell-gap: 2px;
+    --chart-hist-h: clamp(80px, 13svh, 140px);
+  }
+
+  /* .rx-charts owns the chart to chart rhythm now */
+  .chart + .chart { margin-top: 0; }
+
+  .chart__title {
+    font-size: 0.65rem;
+    line-height: 1.3;
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .chart__note {
+    margin-top: 0.4rem;
+    font-size: 0.62rem;
+    line-height: 1.35;
+  }
+
+  .chart-bars__label,
+  .chart-stacked__label,
+  .chart-paired__label,
+  .chart-paired__rowlabel,
+  .chart-waffle__legend,
+  .chart-hist__label {
+    font-size: 0.72rem;
+    line-height: 1.35;
+  }
+
+  .chart-bars__value,
+  .chart-stacked__value,
+  .chart-paired__value,
+  .chart-hist__value {
+    font-size: 0.72rem;
+    line-height: 1.3;
+  }
+
+  .chart-bars__sub,
+  .chart-bars__note { font-size: 0.62rem; }
+
+  /* bar rows: the padding is the gap, so rows sit 0.36rem apart */
+  .chart-bars,
+  .chart-stacked { gap: 0; }
+
+  .chart-bars__row,
+  .chart-stacked__row {
+    padding-block: 0.18rem;
+    gap: 0.3rem 0.6rem;
+  }
+
+  .chart-bars__over { font-size: 0.62rem; }
+
+  /* waffle */
+  .chart-waffle { gap: 0.5rem; }
+  .chart-waffle__legend { gap: 0.25rem 0.9rem; font-size: 0.65rem; }
+  .chart-waffle__swatch { width: 9px; height: 9px; }
+
+  /* histogram */
+  .chart-hist__value {
+    padding-bottom: 0.25rem;
+    font-size: 0.62rem;
+  }
+
+  .chart-hist__label {
+    padding-top: 0.3rem;
+    font-size: 0.62rem;
+  }
+
+  /* paired bars */
+  .chart-paired { gap: 0.7rem; }
+  .chart-paired__group { gap: 0.25rem; }
+  .chart-paired__label { font-size: 0.65rem; }
+  .chart-paired__rowlabel { flex: 0 0 6rem; font-size: 0.65rem; }
+  .chart-paired__row { gap: 0.25rem 0.6rem; }
+  .chart-paired__track { height: 10px; }
+
+  /* table: eight rows is the cap the data respects */
+  .chart-table { font-size: 0.68rem; line-height: 1.35; }
+
+  .chart-table th {
+    padding: 0.3rem 0.45rem;
+    font-size: 0.6rem;
+  }
+
+  .chart-table td { padding: 0.3rem 0.45rem; }
+
+  .chart-table .is-mono,
+  .chart-table .is-num { font-size: 0.66rem; }
+}

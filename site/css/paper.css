@@ -1,0 +1,682 @@
+/* paper.css - VARIANT B ("paragon"): pure thermal receipt.
+   Loaded LAST, after tokens.css, receipt.css and charts.css.
+   Every rule is scoped to .rx-page--paper, so index.html (variant A) is
+   untouched. Tokens only, light theme only, no em/en dashes.
+   The look: one narrow strip of thermal paper on a darker desk, everything
+   in Fragment Mono, block characters instead of solid bars, star and dash
+   rules instead of hairlines, no halftone stamps at all. */
+
+/* ====================================================================== */
+/* Page and paper                                                         */
+/* ====================================================================== */
+
+.rx-page.rx-page--paper {
+  background: var(--paper-deep);
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  line-height: var(--lh-mono);
+  letter-spacing: var(--ls-mono);
+  /* B stays a narrow thermal strip until it becomes a deck; the token also
+     drives .rx-printhead, so the print line keeps matching the paper. */
+  --strip-w: min(100% - 3rem, 30rem);
+}
+
+/* The three places that ask for the sans face get the mono face back. */
+.rx-page--paper .rx-title,
+.rx-page--paper .rx-lede,
+.rx-page--paper .rx-highlight,
+.rx-page--paper .chart-table,
+.rx-page--paper .chart-table td {
+  font-family: var(--font-mono);
+}
+
+/* ---- the strip: narrow, bright, faintly banded, heavily crumpled ------ */
+
+.rx-page--paper .rx-strip {
+  padding: var(--sp-7) clamp(1rem, 5vw, 1.75rem);
+  background-color: var(--paper-bright);
+  /* thermal banding: 1 px print lines every 3 px, at about 2.5% ink */
+  background-image: repeating-linear-gradient(
+    180deg,
+    rgb(var(--ink-rgb) / 0.028) 0 1px,
+    rgb(var(--ink-rgb) / 0) 1px 3px
+  );
+  box-shadow:
+    0 1px 0 rgb(var(--ink-rgb) / 0.10),
+    0 3px 8px rgb(var(--ink-rgb) / 0.10),
+    0 12px 26px rgb(var(--ink-rgb) / 0.14),
+    0 30px 60px rgb(var(--ink-rgb) / 0.12),
+    var(--shadow-x) 60px 110px rgb(var(--ink-rgb) / 0.10);
+}
+
+/* the zigzag teeth stay, they just sit on the brighter paper */
+.rx-page--paper .rx-strip::before,
+.rx-page--paper .rx-strip::after {
+  background: var(--paper-bright);
+  filter: drop-shadow(0 1px 0 rgb(var(--ink-rgb) / 0.12));
+}
+
+@media (max-width: 600px) {
+  .rx-page--paper .rx-strip {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: var(--sp-6);
+  }
+}
+
+/* ====================================================================== */
+/* Header: mono, centered                                                 */
+/* ====================================================================== */
+
+.rx-page--paper .rx-header {
+  justify-content: center;
+  align-items: center;
+  gap: var(--sp-3) var(--sp-4);
+  text-align: center;
+  background: var(--paper-bright);
+  border-bottom: 1px dashed var(--hairline);
+}
+
+.rx-page--paper .rx-header__brand {
+  flex: none;
+  justify-content: center;
+  letter-spacing: 0.14em;
+}
+
+.rx-page--paper .rx-header__kicker { text-transform: uppercase; }
+
+.rx-page--paper .rx-header__meta {
+  flex: 0 1 auto;
+  text-align: center;
+}
+
+.rx-page--paper .rx-ticker {
+  margin-left: 0;
+  flex: none;
+  text-align: center;
+}
+
+.rx-page--paper .rx-ticker__value { min-width: 6.5em; }
+
+/* ====================================================================== */
+/* Section separators: printed characters, not borders                    */
+/* ====================================================================== */
+
+.rx-page--paper .rx-section {
+  padding: var(--sp-7) 0 var(--sp-6);
+}
+
+.rx-page--paper .rx-section--hero { padding-top: var(--sp-3); }
+
+.rx-page--paper .rx-section + .rx-section::before {
+  content: "* * * * * * * * * * * * * * * * * * * * * * * *";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  background-image: none;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-align: center;
+  color: var(--hairline);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.rx-page--paper .rx-section + .rx-section::after { content: none; }
+
+/* ====================================================================== */
+/* Type inside the receipt                                                */
+/* ====================================================================== */
+
+.rx-page--paper .rx-stars {
+  font-size: 0.95rem;
+  letter-spacing: 0.16em;
+  text-align: center;
+  white-space: normal;
+  color: var(--ink);
+  margin-bottom: var(--sp-4);
+}
+
+.rx-page--paper .rx-title,
+.rx-page--paper .rx-section--hero .rx-title {
+  font-weight: 400;
+  font-size: clamp(1.6rem, 6vw, 2.4rem);
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  margin-bottom: var(--sp-4);
+}
+
+/* the em keeps its vermilion ink and also picks up the sulphur highlighter */
+.rx-page--paper .rx-title em {
+  color: var(--vermilion);
+  background: var(--sulphur-soft);
+  padding: 0 0.12em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.rx-page--paper .rx-lede {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  letter-spacing: var(--ls-mono);
+  color: var(--graphite);
+  max-width: none;
+  margin-bottom: var(--sp-5);
+}
+
+.rx-page--paper .rx-highlight {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  letter-spacing: var(--ls-mono);
+  text-transform: uppercase;
+  margin-bottom: var(--sp-5);
+}
+
+/* ---- receipt lines ---------------------------------------------------- */
+
+.rx-page--paper .rx-lines {
+  border-top: 1px dashed var(--ink);
+  margin-bottom: var(--sp-5);
+}
+
+.rx-page--paper .rx-line {
+  padding: 0.4rem 0;
+  border-bottom: 1px dotted var(--hairline);
+  font-size: var(--fs-mono-sm);
+  letter-spacing: 0.04em;
+}
+
+.rx-page--paper .rx-line__label { color: var(--ink); }
+
+.rx-page--paper .rx-line--big {
+  padding: 0.65rem 0;
+  border-bottom: 1px dashed var(--ink);
+  font-size: var(--fs-mono);
+}
+
+.rx-page--paper .rx-line--big .rx-num {
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+}
+
+/* ---- big number ------------------------------------------------------- */
+
+.rx-page--paper .rx-big { margin-bottom: var(--sp-5); }
+
+.rx-page--paper .rx-big .rx-num {
+  font-family: var(--font-mono);
+  font-size: clamp(2.6rem, 10vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.rx-page--paper .rx-big__label {
+  max-width: none;
+  font-size: var(--fs-mono-sm);
+  color: var(--graphite);
+}
+
+/* ---- line item: 01 LINIE W COMMICIE ..... 32 993 USD ------------------ */
+
+.rx-page--paper .rx-lineitem {
+  padding-bottom: 0.4rem;
+  margin-bottom: var(--sp-4);
+  border-bottom: 1px dashed var(--ink);
+  font-size: var(--fs-mono);
+  letter-spacing: 0.06em;
+}
+
+.rx-page--paper .rx-lineitem__no {
+  margin-right: 0.7em;
+  padding: 0;
+  background: none;
+  color: var(--ink);
+}
+
+.rx-page--paper .rx-lineitem__name { text-transform: uppercase; }
+
+/* ---- callouts: framed by ==== rules ----------------------------------- */
+
+.rx-page--paper .rx-callouts { gap: var(--sp-4); }
+
+.rx-page--paper .rx-callout {
+  padding: 0.35rem 0;
+  border-left: 0;
+  font-size: var(--fs-mono-sm);
+  letter-spacing: 0.04em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.rx-page--paper .rx-callout::before,
+.rx-page--paper .rx-callout::after {
+  content: "========================================================";
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  letter-spacing: 0;
+  line-height: 1.1;
+  color: var(--hairline);
+}
+
+.rx-page--paper .rx-callout::before { margin-bottom: 0.35rem; }
+.rx-page--paper .rx-callout::after { margin-top: 0.35rem; }
+
+/* ---- the data gap stamp stays exactly as it is (very receipt) --------- */
+
+.rx-page--paper .rx-gap {
+  font-size: var(--fs-mono-sm);
+  max-width: 100%;
+}
+
+.rx-page--paper .rx-gap--unpaid {
+  font-size: 1.1rem;
+  letter-spacing: 0.18em;
+}
+
+/* ---- no halftone at all in variant B ---------------------------------- */
+
+.rx-page--paper .rx-stamp { display: none; }
+
+/* ---- footnote --------------------------------------------------------- */
+
+.rx-page--paper .rx-footnote {
+  font-size: 0.65rem;
+  line-height: 1.6;
+  max-width: none;
+}
+
+/* ====================================================================== */
+/* Charts: printed with block characters                                  */
+/* ====================================================================== */
+
+.rx-page--paper .chart {
+  --chart-label-w: 7.5rem;
+  --chart-value-w: 4.25rem;
+  --chart-bar-h: 12px;
+  --chart-cell: 9px;
+  --chart-cell-gap: 2px;
+  --chart-hist-h: 130px;
+  margin-block: 1.25rem;
+}
+
+.rx-page--paper .chart__title {
+  text-align: center;
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-bottom: 0.8rem;
+  color: var(--ink);
+  letter-spacing: 0.12em;
+}
+
+.rx-page--paper .chart__title::before { content: "* "; }
+.rx-page--paper .chart__title::after { content: " *"; }
+
+.rx-page--paper .chart__note {
+  font-size: 0.65rem;
+  text-align: center;
+}
+
+/* ---- tracks become dotted outlines ------------------------------------ */
+
+.rx-page--paper .chart-bars__track,
+.rx-page--paper .chart-stacked__track,
+.rx-page--paper .chart-paired__track {
+  background: transparent;
+  border: 1px dotted var(--hairline);
+}
+
+/* ---- fills become chunky block runs ----------------------------------- */
+
+.rx-page--paper .chart-bars__fill,
+.rx-page--paper .chart-paired__fill,
+.rx-page--paper .chart-stacked__part,
+.rx-page--paper .chart-hist__bar {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--tone) 0 6px,
+    transparent 6px 8px
+  );
+}
+
+/* the unread share keeps its hatch, printed a little coarser */
+.rx-page--paper .chart-stacked__part[data-tone="bad"] {
+  background-color: transparent;
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--vermilion) 0 2px,
+    transparent 2px 6px
+  );
+}
+
+.rx-page--paper .chart-stacked__part + .chart-stacked__part {
+  border-left: 1px dotted var(--hairline);
+}
+
+.rx-page--paper .chart-bars__over { color: var(--ink); }
+
+/* ---- the ASCII block bar render.js adds next to every value ----------- */
+
+.rx-page--paper .chart-bars__ascii {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+/* ---- histogram -------------------------------------------------------- */
+
+.rx-page--paper .chart-hist__label {
+  border-top: 1px dotted var(--hairline);
+  font-size: 0.62rem;
+}
+
+.rx-page--paper .chart-hist__value { font-size: 0.62rem; }
+
+/* ---- waffle ----------------------------------------------------------- */
+
+.rx-page--paper .chart-waffle__legend { font-size: 0.65rem; }
+
+/* ---- table ------------------------------------------------------------ */
+
+.rx-page--paper .chart-table {
+  font-size: 0.7rem;
+  background: transparent;
+}
+
+.rx-page--paper .chart-table th {
+  font-size: 0.65rem;
+  padding: 0.35rem 0.45rem;
+  border-bottom: 1px dashed var(--ink);
+  color: var(--ink);
+}
+
+.rx-page--paper .chart-table td {
+  font-size: 0.7rem;
+  padding: 0.35rem 0.45rem;
+  border-bottom: 1px dotted var(--hairline);
+}
+
+.rx-page--paper .chart-table .is-mono,
+.rx-page--paper .chart-table .is-num { font-size: 0.7rem; }
+
+/* ====================================================================== */
+/* Closing                                                                */
+/* ====================================================================== */
+
+.rx-page--paper .rx-band {
+  background: var(--sulphur-soft);
+  opacity: 0.7;
+}
+
+.rx-page--paper .rx-total {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.2em;
+  padding: var(--sp-4) 0;
+  border-block: 3px double var(--ink);
+}
+
+.rx-page--paper .rx-total__label { letter-spacing: 0.18em; }
+
+.rx-page--paper .rx-total .rx-num {
+  flex: none;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: clamp(2.2rem, 9vw, 3.2rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+.rx-page--paper .rx-thanks {
+  margin: var(--sp-6) 0 var(--sp-4);
+  font-size: clamp(0.8rem, 3.4vw, 1.05rem);
+  letter-spacing: 0.3em;
+  text-align: center;
+  text-indent: 0.3em;   /* the last letter-space, so the line reads centered */
+}
+
+.rx-page--paper .rx-sources {
+  font-size: 0.65rem;
+  margin-top: var(--sp-4);
+}
+
+/* ---- CSS-only barcode under the sources ------------------------------- */
+
+.rx-page--paper .rx-barcode {
+  width: min(100%, 18rem);
+  height: 56px;
+  margin: var(--sp-5) auto 0;
+  background-color: var(--paper-bright);
+  /* four runs with different periods, offset, so the bars read irregular */
+  background-image:
+    repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 9px),
+    repeating-linear-gradient(90deg, var(--ink) 0 4px, transparent 4px 17px),
+    repeating-linear-gradient(90deg, var(--ink) 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(90deg, var(--ink) 0 3px, transparent 3px 23px);
+  background-position: 0 0, 3px 0, 7px 0, 13px 0;
+  background-repeat: repeat-x;
+}
+
+.rx-page--paper .rx-barcode__digits {
+  margin-top: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono-sm);
+  letter-spacing: 0.28em;
+  text-indent: 0.28em;
+  text-align: center;
+  color: var(--ink);
+}
+
+/* ====================================================================== */
+/* Narrow phones                                                          */
+/* ====================================================================== */
+
+@media (max-width: 400px) {
+  .rx-page--paper .chart {
+    --chart-label-w: 100%;
+    --chart-value-w: 3.5rem;
+  }
+
+  .rx-page--paper .rx-line,
+  .rx-page--paper .rx-lineitem {
+    letter-spacing: 0.02em;
+  }
+
+  .rx-page--paper .rx-stars { font-size: 0.8rem; letter-spacing: 0.1em; }
+
+  .rx-page--paper .rx-barcode { height: 48px; }
+}
+
+/* ====================================================================== */
+/* Slide mode (variant B)                                                 */
+/* The thermal strip widens into a two column deck. Everything stays mono, */
+/* banded and dashed; only the geometry and the rhythm change.             */
+/* ====================================================================== */
+
+@media (min-width: 900px) and (min-height: 620px) {
+
+  /* ---- the strip: wider, no vertical padding of its own -------------- */
+
+  .rx-page.rx-page--paper { --strip-w: min(100% - 3rem, 72rem); }
+
+  .rx-page--paper .rx-strip {
+    padding-block: 0;
+    padding-inline: clamp(1rem, 2.5vw, 1.75rem);
+  }
+
+  /* ---- sections: the slide padding wins over the receipt padding ----- */
+
+  .rx-page--paper .rx-section { padding-block: var(--slide-pad); }
+  .rx-page--paper .rx-section--hero { padding-top: var(--slide-pad); }
+
+  /* ---- the copy column reads as a column, not as a centred receipt --- */
+
+  .rx-page--paper .rx-slide__copy .rx-stars,
+  .rx-page--paper .rx-slide__copy .rx-callout,
+  .rx-page--paper .rx-slide__copy .rx-callout::before { text-align: left; }
+
+  .rx-page--paper .rx-slide__copy .rx-stars { white-space: nowrap; }
+
+  /* ---- compact mono type -------------------------------------------- */
+
+  .rx-page--paper .rx-title {
+    font-size: clamp(1.1rem, 1.6vw, 1.5rem);
+    line-height: 1.15;
+    margin-bottom: var(--gap-v-sm);
+  }
+
+  .rx-page--paper .rx-section--hero .rx-title {
+    font-size: clamp(1.6rem, 2.6vw, 2.4rem);
+    line-height: 1.1;
+    margin-bottom: var(--gap-v);
+  }
+
+  .rx-page--paper .rx-stars {
+    font-size: 0.8rem;
+    margin-bottom: var(--gap-v);
+  }
+
+  .rx-page--paper .rx-lede {
+    font-size: 0.72rem;
+    line-height: 1.5;
+    margin-bottom: var(--gap-v-sm);
+  }
+
+  .rx-page--paper .rx-highlight {
+    font-size: 0.75rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  .rx-page--paper .rx-big { margin-bottom: var(--gap-v-sm); }
+
+  .rx-page--paper .rx-big .rx-num {
+    font-size: var(--fs-big-slide);
+    line-height: 1;
+  }
+
+  .rx-page--paper .rx-lineitem {
+    padding-bottom: 0.4rem;
+    margin-bottom: var(--gap-v-sm);
+  }
+
+  .rx-page--paper .rx-lines { margin-bottom: var(--gap-v); }
+
+  /* one printed rule per callout instead of a full frame */
+  .rx-page--paper .rx-callouts { gap: var(--gap-v-sm); }
+
+  .rx-page--paper .rx-callout {
+    padding: 0.15rem 0;
+    font-size: 0.62rem;
+    line-height: 1.4;
+  }
+
+  .rx-page--paper .rx-callout::before {
+    line-height: 1;
+    margin-bottom: 0.2rem;
+  }
+
+  .rx-page--paper .rx-callout::after { content: none; }
+
+  .rx-page--paper .rx-gap {
+    font-size: 0.62rem;
+    line-height: 1.35;
+    max-width: 26em;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .rx-page--paper .rx-footnote { line-height: 1.5; }
+
+  /* ---- the ornament that stands in for the halftone stamp ----------- */
+
+  .rx-page--paper .rx-slide__ornament {
+    margin: var(--gap-v-sm) 0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.35;
+    letter-spacing: 0.3em;
+    color: var(--hairline);
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .rx-page--paper .rx-slide__ornament::before {
+    content: "* * * * *\A=========\A* * * * *\A=========\A* * * * *";
+    display: block;
+    white-space: pre;
+  }
+
+  /* ---- charts ------------------------------------------------------- */
+
+  .rx-page--paper .chart {
+    margin-block: 0;
+    --chart-label-w: 9rem;
+    --chart-value-w: 4.25rem;
+    --chart-bar-h: 10px;
+    --chart-cell: 9px;
+    --chart-cell-gap: 2px;
+    --chart-hist-h: clamp(80px, 13svh, 140px);
+  }
+
+  .rx-page--paper .chart__title {
+    font-size: 0.65rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .rx-page--paper .chart__note {
+    font-size: 0.62rem;
+    margin-top: 0.4rem;
+  }
+
+  .rx-page--paper .chart-table,
+  .rx-page--paper .chart-table td { font-size: 0.68rem; }
+
+  .rx-page--paper .chart-table th { font-size: 0.6rem; padding: 0.3rem 0.45rem; }
+  .rx-page--paper .chart-table td { padding: 0.3rem 0.45rem; }
+
+  .rx-page--paper .chart-table .is-mono,
+  .rx-page--paper .chart-table .is-num { font-size: 0.66rem; }
+
+  .rx-page--paper .chart-hist__label,
+  .rx-page--paper .chart-hist__value { font-size: 0.62rem; }
+
+  .rx-page--paper .chart-waffle__legend { font-size: 0.62rem; }
+
+  .rx-page--paper .chart-bars__ascii { font-size: 0.62rem; }
+
+  /* ---- closing ------------------------------------------------------ */
+
+  /* the compact .rx-page--paper .rx-gap rule above outranks the variant A
+     slide rule, so B restates the closing stamp too */
+  .rx-page--paper .rx-gap--unpaid {
+    padding: 0.4rem 0.9rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.18em;
+    max-width: none;
+    transform: rotate(-8deg);
+  }
+
+  .rx-page--paper .rx-total { padding: var(--gap-v) 0; }
+
+  .rx-page--paper .rx-thanks { margin: var(--gap-v) 0; }
+
+  .rx-page--paper .rx-sources { margin-top: var(--gap-v); }
+
+  /* the CSS barcode closes the data column of the closing slide */
+  .rx-page--paper .rx-slide__data .rx-barcode {
+    height: 48px;
+    margin-top: var(--gap-v);
+  }
+
+  .rx-page--paper .rx-barcode__digits { margin-top: 0.4rem; }
+}
