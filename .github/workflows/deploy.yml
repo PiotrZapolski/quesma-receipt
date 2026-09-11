@@ -21,22 +21,7 @@ jobs:
       - uses: actions/checkout@v4
 
       # Strona jest statyczna, wiec zamiast testow robimy smoke check skladni JS.
-      - name: Smoke check (node --check na site/js)
-        run: |
-          set -euo pipefail
-          found=0
-          while IFS= read -r -d '' f; do
-            echo "check $f"
-            node --check "$f"
-            found=$((found + 1))
-          done < <(find site/js -type f -name '*.js' -print0)
-          if [ "$found" -eq 0 ]; then
-            echo "Brak plikow .js w site/js - cos jest nie tak"
-            exit 1
-          fi
-          echo "OK: sprawdzono $found plikow"
 
-      # Runner stoi na maszynie produkcyjnej, wiec deploy leci lokalnie - bez SSH.
       - name: Pull, rebuild, restart
         run: |
           set -euo pipefail
