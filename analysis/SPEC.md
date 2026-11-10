@@ -14,7 +14,7 @@ one row per meta event. Nothing is analysed here; this is the extraction layer o
   object spread over many lines (keys: info, messages) - load those whole.
 - Never crash the whole run on a bad line/session: count the error, log to `errors.jsonl`
   (session_id, line_no, exception), continue.
-- Paths: dataset root = `/Users/zapol/Projects/swe-chat-enhanced-2026-07-05-full`.
+- Paths: dataset root = `/Users/piotrzapolski/Projects/swe-chat-enhanced-2026-07-05-full`.
   Transcripts: `data/transcripts/<session_id>.jsonl`. Catalog: `metadata/sessions.json`
   (`.sessions[]` has session_id, agent, source.repository, bytes, statistics, checkpoint_token_usage,
   initial_attribution, files_touched, created_at, models, agent_versions, detected_format).
