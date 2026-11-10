@@ -2,8 +2,8 @@
 
 Generated 2026-09-11 20:47:24
 
-- ledger: `/Users/zapol/Projects/swe-chat-enhanced-2026-07-05-full/analysis/ledger`
-- prices: `/Users/zapol/Projects/swe-chat-enhanced-2026-07-05-full/analysis/prices.csv`
+- ledger: `/Users/piotrzapolski/Projects/swe-chat-enhanced-2026-07-05-full/analysis/ledger`
+- prices: `/Users/piotrzapolski/Projects/swe-chat-enhanced-2026-07-05-full/analysis/prices.csv`
 - setup: 6.3s, total runtime: 10.0s
 - files run: 27, failed: 0
 
